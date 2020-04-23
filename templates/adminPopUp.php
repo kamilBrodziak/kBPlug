@@ -11,8 +11,8 @@
                 <li id="popUpSettingsListItemImage" class="">Image</li>
             </ul>
             <?php
-                settings_fields('popUpThatPluginPopUp');
-                do_settings_sections('popUpThatPluginPopUp');
+                settings_fields('kBPluginPopUp');
+                do_settings_sections('kBPluginPopUp');
                 submit_button();
             ?>
         </div>

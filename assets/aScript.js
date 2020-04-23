@@ -1,13 +1,13 @@
 $(document).ready(function($) {
     let mediaUploadInputs = {
-        'uploadButtonForpUTImageContent': {
-            "hiddenInputId" : "pUTImageContent",
-            "imgTagId": "imgpUTImageContent",
+        'uploadButtonForkBPImageContent': {
+            "hiddenInputId" : "kBPImageContent",
+            "imgTagId": "imgkBPImageContent",
             "mediaUploaderTitle": "Choose a pop up picture"
         },
-        'uploadButtonForpUTImageMobileContent': {
-            "hiddenInputId" : "pUTImageMobileContent",
-            "imgTagId": "imgpUTImageMobileContent",
+        'uploadButtonForkBPImageMobileContent': {
+            "hiddenInputId" : "kBPImageMobileContent",
+            "imgTagId": "imgkBPImageMobileContent",
             "mediaUploaderTitle": "Choose a mobile pop up image"
         }
     };

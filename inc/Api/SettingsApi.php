@@ -65,8 +65,9 @@ class SettingsApi {
 	}
 
 	public function setSections(array $sections, $pageSlug) {
-		$this->settingsCallbacks = new SettingsCallbacks($pageSlug);
-		$sectionsOutput = [];
+//		$this->settingsCallbacks = new SettingsCallbacks($pageSlug);
+        $this->settingsCallbacks = new SettingsCallbacks($sections);
+        $sectionsOutput = [];
 
 		foreach ($sections as $section) {
 			$sectionTemp = [

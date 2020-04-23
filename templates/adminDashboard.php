@@ -4,8 +4,8 @@
 
     <form method="post" action="options.php">
             <?php
-            settings_fields('popUpThatPlugin');
-            do_settings_sections('popUpThatPlugin');
+            settings_fields('kBPlugin');
+            do_settings_sections('kBPlugin');
             submit_button();
             ?>
     </form>

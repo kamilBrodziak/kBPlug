@@ -1,19 +1,15 @@
 <?php
 namespace Inc\Api\Callbacks;
 
-
-use Inc\Base\BaseController;
-
-class SettingsCallbacks extends BaseController {
-	public $pageSlug;
-	public function __construct($pageSlug) {
-		parent::__construct();
-		$this->pageSlug = $pageSlug;
+class SettingsCallbacks {
+	public $settingsSections;
+	public function __construct($sections) {
+		$this->settingsSections = $sections;
 	}
 
 	public function sanitizeInput($input) {
 		$output = [];
-		foreach($this->sectionManager[$this->pageSlug] as $section) {
+		foreach($this->settingsSections as $section) {
 			foreach ($section['fields'] as $field) {
 				if($field['fieldType'] == 'checkbox') {
 					$output[$field['id']] = isset($input[$field['id']]) ? true : false;
@@ -67,13 +63,11 @@ class SettingsCallbacks extends BaseController {
 		     '<input id="' . $name . '" type="hidden" name="' . $optionName . '[' . $name . ']' . '" value="' . $value . '" >';
 	}
 
-	public function pUTMainSettingsSection() {
-		//		echo 'Main Options';
-	}
+	public function kBPMainSettingsSection() {}
 
-	public function pUTHeaderSection() {}
-	public function pUTFeaturesSection() {}
-	public function pUTSubHeaderSection() {}
-	public function pUTDescriptionSection() {}
-	public function pUTImageSection() {}
+	public function kBPHeaderSection() {}
+	public function kBPFeaturesSection() {}
+	public function kBPSubHeaderSection() {}
+	public function kBPDescriptionSection() {}
+	public function kBPImageSection() {}
 }

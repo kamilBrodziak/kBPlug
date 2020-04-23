@@ -11,12 +11,12 @@ class Activate {
         flush_rewrite_rules();
 	    $default = [];
 
-        if(!get_option('popUpThatPlugin')) {
-	        update_option('popUpThatPlugin', $default);
+        if(!get_option('kBPlugin')) {
+	        update_option('kBPlugin', $default);
         }
 
-	    if(!get_option('popUpThatPluginPopUp')) {
-		    update_option('popUpThatPluginPopUp', $default);
+	    if(!get_option('kBPluginPopUp')) {
+		    update_option('kBPPopUp', $default);
 	    }
 
     }

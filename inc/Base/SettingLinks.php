@@ -12,7 +12,7 @@ class SettingLinks extends BaseController {
     }
 
     function settingsPluginsLink($links) {
-        $settingsLink = '<a href="admin.php?page=popUpThatPlugin">Settings</a>';
+        $settingsLink = '<a href="admin.php?page=kamilBrodziakPlugin">Settings</a>';
         array_push($links, $settingsLink);
         return $links;
     }

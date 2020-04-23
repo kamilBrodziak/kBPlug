@@ -19,10 +19,10 @@ final class Init {
 
     public static function getServices() {
         return [
-	        Pages\Dashboard::class,
+	        Controllers\DashboardController::class,
 	        Base\Enqueue::class,
             Base\SettingLinks::class,
-	        Base\PopUpController::class
+	        Controllers\PopUpController::class
         ];
     }
 
