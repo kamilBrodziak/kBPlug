@@ -63,11 +63,17 @@ class SettingsCallbacks {
 		     '<input id="' . $name . '" type="hidden" name="' . $optionName . '[' . $name . ']' . '" value="' . $value . '" >';
 	}
 
-	public function kBPMainSettingsSection() {}
+//	public function kBPMainSettingsSection() {}
+    public function kBPFeaturesSection() {}
+	public function kBPPopUpHeaderSection() {
+    }
+	public function kBPPopUpSubHeaderSection() {
+    }
+	public function kBPPopUpDescriptionSection() {
+    }
+	public function kBPPopUpImageSection() {
+    }
 
-	public function kBPHeaderSection() {}
-	public function kBPFeaturesSection() {}
-	public function kBPSubHeaderSection() {}
-	public function kBPDescriptionSection() {}
-	public function kBPImageSection() {}
+    public function kBPPopUpStyleSection() {
+    }
 }

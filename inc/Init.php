@@ -22,7 +22,8 @@ final class Init {
 	        Controllers\DashboardController::class,
 	        Base\Enqueue::class,
             Base\SettingLinks::class,
-	        Controllers\PopUpController::class
+	        Controllers\PopUpController::class,
+            Controllers\CustomCSSController::class
         ];
     }
 

@@ -71,4 +71,14 @@ div.uiToggle label:hover, div.uiToggle label > div:hover {
   display: none;
 }
 
+#kBPCustomCSS {
+  display: none;
+}
+
+#kBPCustomCSSEditor {
+  position: relative;
+  width: 500px;
+  height: 400px;
+}
+
 /*# sourceMappingURL=aStyle.css.map */

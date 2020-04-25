@@ -16,4 +16,8 @@ class AdminCallbacks extends BaseController {
 	public function adminPopUp() {
 		return require_once("$this->pluginPath/templates/adminPopUp.php");
 	}
+
+    public function adminCustomCSS() {
+        return require_once("$this->pluginPath/templates/adminCustomCSS.php");
+    }
 }

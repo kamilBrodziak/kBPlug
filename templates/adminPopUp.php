@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h1>Pop up settings</h1>
+	<h1>Pop up settings, shortcode: [kBPPopUp]</h1>
 	<?php settings_errors(); ?>
 
 	<form method="post" action="options.php">

@@ -52,6 +52,14 @@ class DashboardController extends BaseController {
                         'args' => [
                             'class' => 'uiToggle'
                         ]
+                    ],
+                    [
+                        'id' => 'kBPCustomCSSEnable',
+                        'title' => 'Enable custom css feature?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
                     ]
                 ]
             ]

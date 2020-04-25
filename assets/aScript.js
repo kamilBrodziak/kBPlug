@@ -1,13 +1,13 @@
 $(document).ready(function($) {
     let mediaUploadInputs = {
-        'uploadButtonForkBPImageContent': {
-            "hiddenInputId" : "kBPImageContent",
-            "imgTagId": "imgkBPImageContent",
+        'uploadButtonForkBPPopUpImageContent': {
+            "hiddenInputId" : "kBPPopUpImageContent",
+            "imgTagId": "imgkBPPopUpImageContent",
             "mediaUploaderTitle": "Choose a pop up picture"
         },
-        'uploadButtonForkBPImageMobileContent': {
-            "hiddenInputId" : "kBPImageMobileContent",
-            "imgTagId": "imgkBPImageMobileContent",
+        'uploadButtonForkBPPopUpImageMobileContent': {
+            "hiddenInputId" : "kBPPopUpImageMobileContent",
+            "imgTagId": "imgkBPPopUpImageMobileContent",
             "mediaUploaderTitle": "Choose a mobile pop up image"
         }
     };
@@ -32,31 +32,8 @@ $(document).ready(function($) {
         });
     }
 
-    // let menuItemIds = [];
-    // $(".kBPluginMenu li").each(function() {
-    //     menuItemIds.push($(this).attr('id'));
-    // });
-    // let number = 0;
-    // $('.kBPluginSettingsWithMenu h2').each( function() {
-    //     $(this).addClass("hookFor-" + menuItemIds[number++]);
-    // });
-    //
-    // number = 0;
-    // $('.kBPluginSettingsWithMenu table').each( function() {
-    //     $(this).addClass("hookFor-" + menuItemIds[number++]);
-    // });
-    //
-    // $('.kBPluginMenu li').each(function() {
-    //     $(this).on('click', function() {
-    //         $('.kBPluginMenu li.active').removeClass("active");
-    //         $(this).addClass("active");
-    //     })
-    // });
-    // let popUpMenu = new Menu('kBPluginSettingsWithMenu', 'kBPluginMenu', 'active');
     let popUpMenu = new Menu($('.kBPluginSettingsWithMenu'), $('.kBPluginMenu'), 'active');
-    // let popUpMenu = new Menu('kBPluginSettingsWithMenu', 'kBPluginMenu', 'active');
     popUpMenu.addMenu();
-
 });
 
 class Menu {

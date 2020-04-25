@@ -18,9 +18,7 @@ class PopUpController extends BaseController {
 
 
 	public function register() {
-		$option = get_option('kBPlugin');
-		$activated = (isset($option['kBPPopUpEnable'])) ? ($option['kBPPopUpEnable'] ? true : false) : false;
-		if($activated) {
+		if($this->isActivated('kBPPopUpEnable')) {
 			$this->pageSlug = 'kBPluginPopUp';
 			$this->settings = new SettingsApi();
 			$this->callbacks = new AdminCallbacks();
@@ -31,13 +29,36 @@ class PopUpController extends BaseController {
 		}
 	}
 
-	public function activate() {}
+	public function activate() {
+        add_shortcode('kBPPopUp', array($this, 'setShortcode'));
+    }
+
+	public function setShortcode() {
+//	    return
+//            '<aside id="kBPPopUp">
+//                <header id="kBPPopUpHeader">
+//                    <h2 id="kBPPopUpTitle">title</h2>
+//                </header>
+//                <section id="kBPPopUpContent">
+//                    <h3 id="kBPPopUpSubHeader">sub</h3>
+//                    <div id="kBPPopUpDescription">desc</div>
+//                    <figure id="kBPPopUpImgContainer">
+//                        <img id="kBPPopUpImg"/>
+//                    </figure>
+//                    <form id="kBPPopUpForm"></form>
+//                </section>
+//                <footer id="kBPPopUpFooter">
+//                    <a id="kBPPopUpClose">X</a>
+//                </footer>
+//            </aside>';
+        return require_once("$this->pluginPath/templates/frontEnd/popUp.php");
+    }
 
 	public function setSubPages() {
 		$this->subPages = [
 			[
 				'parentSlug' => 'kBPlugin',
-				'pageTitle' => 'Pop Up',
+				'pageTitle' => 'kBPlugin Pop up',
 				'menuTitle' => 'Pop up',
 				'capability' => 'manage_options',
 				'menuSlug' => 'kBPluginPopUp',
@@ -49,11 +70,11 @@ class PopUpController extends BaseController {
     public function setSections() {
         $sections = [
             [
-                'id' => 'kBPHeaderSection',
+                'id' => 'kBPPopUpHeaderSection',
                 'title' => 'Pop up header',
                 'fields' => [
                     [
-                        'id' => 'kBPHeaderEnable',
+                        'id' => 'kBPPopUpHeaderEnable',
                         'title' => 'Enable header?',
                         'fieldType' => 'checkbox',
                         'args' => [
@@ -61,7 +82,7 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPHeaderContent',
+                        'id' => 'kBPPopUpHeaderContent',
                         'title' => 'Header content',
                         'fieldType' => 'textarea',
                         'args' => [
@@ -69,15 +90,15 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPHeaderDiffForMobile',
-                        'title' => 'Different for mobile?',
+                        'id' => 'kBPPopUpHeaderMobileEnable',
+                        'title' => 'Enable header for mobile?',
                         'fieldType' => 'checkbox',
                         'args' => [
                             'class' => 'uiToggle'
                         ]
                     ],
                     [
-                        'id' => 'kBPHeaderMobileContent',
+                        'id' => 'kBPPopUpHeaderMobileContent',
                         'title' => 'Header content (mobile)',
                         'fieldType' => 'textarea',
                         'args' => [
@@ -87,11 +108,11 @@ class PopUpController extends BaseController {
                 ]
             ],
             [
-                'id' => 'kBPSubHeaderSection',
+                'id' => 'kBPPopUpSubHeaderSection',
                 'title' => 'Pop up subheader',
                 'fields' => [
                     [
-                        'id' => 'kBPSubHeaderEnable',
+                        'id' => 'kBPPopUpSubHeaderEnable',
                         'title' => 'Enable subheader?',
                         'fieldType' => 'checkbox',
                         'args' => [
@@ -99,7 +120,7 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPSubHeaderContent',
+                        'id' => 'kBPPopUpSubHeaderContent',
                         'title' => 'Subheader content',
                         'fieldType' => 'textarea',
                         'args' => [
@@ -107,15 +128,15 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPSubHeaderDiffForMobile',
-                        'title' => 'Different for mobile?',
+                        'id' => 'kBPPopUpSubHeaderMobileEnable',
+                        'title' => 'Enable subheader for mobile?',
                         'fieldType' => 'checkbox',
                         'args' => [
                             'class' => 'uiToggle'
                         ]
                     ],
                     [
-                        'id' => 'kBPSubHeaderMobileContent',
+                        'id' => 'kBPPopUpSubHeaderMobileContent',
                         'title' => 'Subheader content (mobile)',
                         'fieldType' => 'textarea',
                         'args' => [
@@ -125,11 +146,11 @@ class PopUpController extends BaseController {
                 ]
             ],
             [
-                'id' => 'kBPDescriptionSection',
+                'id' => 'kBPPopUpDescriptionSection',
                 'title' => 'Pop up description',
                 'fields' => [
                     [
-                        'id' => 'kBPDescriptionEnable',
+                        'id' => 'kBPPopUpDescriptionEnable',
                         'title' => 'Enable description?',
                         'fieldType' => 'checkbox',
                         'args' => [
@@ -137,7 +158,7 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPDescriptionContent',
+                        'id' => 'kBPPopUpDescriptionContent',
                         'title' => 'Description content',
                         'fieldType' => 'textarea',
                         'args' => [
@@ -145,15 +166,15 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPDescriptionDiffForMobile',
-                        'title' => 'Different for mobile?',
+                        'id' => 'kBPPopUpDescriptionMobileEnable',
+                        'title' => 'Enable description for mobile?',
                         'fieldType' => 'checkbox',
                         'args' => [
                             'class' => 'uiToggle'
                         ]
                     ],
                     [
-                        'id' => 'kBPDescriptionMobileContent',
+                        'id' => 'kBPPopUpDescriptionMobileContent',
                         'title' => 'Description content (mobile)',
                         'fieldType' => 'textarea',
                         'args' => [
@@ -163,11 +184,11 @@ class PopUpController extends BaseController {
                 ]
             ],
             [
-                'id' => 'kBPImageSection',
+                'id' => 'kBPPopUpImageSection',
                 'title' => 'Pop up image',
                 'fields' => [
                     [
-                        'id' => 'kBPImageEnable',
+                        'id' => 'kBPPopUpImageEnable',
                         'title' => 'Enable image?',
                         'fieldType' => 'checkbox',
                         'args' => [
@@ -175,15 +196,7 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPImageMobileEnable',
-                        'title' => 'Enable image for mobile?',
-                        'fieldType' => 'checkbox',
-                        'args' => [
-                            'class' => 'uiToggle'
-                        ]
-                    ],
-                    [
-                        'id' => 'kBPImageContent',
+                        'id' => 'kBPPopUpImageContent',
                         'title' => 'Image',
                         'fieldType' => 'image',
                         'args' => [
@@ -191,15 +204,15 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPImageDiffForMobile',
-                        'title' => 'Different for mobile?',
+                        'id' => 'kBPPopUpImageMobileEnable',
+                        'title' => 'Enable image for mobile?',
                         'fieldType' => 'checkbox',
                         'args' => [
                             'class' => 'uiToggle'
                         ]
                     ],
                     [
-                        'id' => 'kBPImageMobileContent',
+                        'id' => 'kBPPopUpImageMobileContent',
                         'title' => 'Image (mobile)',
                         'fieldType' => 'image',
                         'args' => [
