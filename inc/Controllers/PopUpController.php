@@ -30,27 +30,11 @@ class PopUpController extends BaseController {
 	}
 
 	public function activate() {
-        add_shortcode('kBPPopUp', array($this, 'setShortcode'));
+//        add_shortcode('kBPPopUp', array($this, 'setShortcode'));
+        add_action('wp_footer', array($this, 'setShortcode'));
     }
 
 	public function setShortcode() {
-//	    return
-//            '<aside id="kBPPopUp">
-//                <header id="kBPPopUpHeader">
-//                    <h2 id="kBPPopUpTitle">title</h2>
-//                </header>
-//                <section id="kBPPopUpContent">
-//                    <h3 id="kBPPopUpSubHeader">sub</h3>
-//                    <div id="kBPPopUpDescription">desc</div>
-//                    <figure id="kBPPopUpImgContainer">
-//                        <img id="kBPPopUpImg"/>
-//                    </figure>
-//                    <form id="kBPPopUpForm"></form>
-//                </section>
-//                <footer id="kBPPopUpFooter">
-//                    <a id="kBPPopUpClose">X</a>
-//                </footer>
-//            </aside>';
         return require_once("$this->pluginPath/templates/frontEnd/popUp.php");
     }
 
@@ -82,15 +66,15 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpHeaderContent',
-                        'title' => 'Header content',
+                        'id' => 'kBPPopUpHeader',
+                        'title' => 'Header text',
                         'fieldType' => 'textarea',
                         'args' => [
                             'class' => 'example'
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpHeaderMobileEnable',
+                        'id' => 'kBPPopUpHeaderEnableMobile',
                         'title' => 'Enable header for mobile?',
                         'fieldType' => 'checkbox',
                         'args' => [
@@ -98,8 +82,8 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpHeaderMobileContent',
-                        'title' => 'Header content (mobile)',
+                        'id' => 'kBPPopUpHeaderMobile',
+                        'title' => 'Header text (mobile)',
                         'fieldType' => 'textarea',
                         'args' => [
                             'class' => 'example'
@@ -108,11 +92,11 @@ class PopUpController extends BaseController {
                 ]
             ],
             [
-                'id' => 'kBPPopUpSubHeaderSection',
+                'id' => 'kBPPopUpSubheaderSection',
                 'title' => 'Pop up subheader',
                 'fields' => [
                     [
-                        'id' => 'kBPPopUpSubHeaderEnable',
+                        'id' => 'kBPPopUpSubheaderEnable',
                         'title' => 'Enable subheader?',
                         'fieldType' => 'checkbox',
                         'args' => [
@@ -120,15 +104,15 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpSubHeaderContent',
-                        'title' => 'Subheader content',
+                        'id' => 'kBPPopUpSubheader',
+                        'title' => 'Subheader text',
                         'fieldType' => 'textarea',
                         'args' => [
                             'class' => 'example'
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpSubHeaderMobileEnable',
+                        'id' => 'kBPPopUpSubheaderEnableMobile',
                         'title' => 'Enable subheader for mobile?',
                         'fieldType' => 'checkbox',
                         'args' => [
@@ -136,8 +120,8 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpSubHeaderMobileContent',
-                        'title' => 'Subheader content (mobile)',
+                        'id' => 'kBPPopUpSubheaderMobile',
+                        'title' => 'Subheader text (mobile)',
                         'fieldType' => 'textarea',
                         'args' => [
                             'class' => 'example'
@@ -158,15 +142,15 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpDescriptionContent',
-                        'title' => 'Description content',
+                        'id' => 'kBPPopUpDescription',
+                        'title' => 'Description text',
                         'fieldType' => 'textarea',
                         'args' => [
                             'class' => 'example'
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpDescriptionMobileEnable',
+                        'id' => 'kBPPopUpDescriptionEnableMobile',
                         'title' => 'Enable description for mobile?',
                         'fieldType' => 'checkbox',
                         'args' => [
@@ -174,8 +158,8 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpDescriptionMobileContent',
-                        'title' => 'Description content (mobile)',
+                        'id' => 'kBPPopUpDescriptionMobile',
+                        'title' => 'Description text (mobile)',
                         'fieldType' => 'textarea',
                         'args' => [
                             'class' => 'example'
@@ -196,7 +180,7 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpImageContent',
+                        'id' => 'kBPPopUpImage',
                         'title' => 'Image',
                         'fieldType' => 'image',
                         'args' => [
@@ -204,7 +188,7 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpImageMobileEnable',
+                        'id' => 'kBPPopUpImageEnableMobile',
                         'title' => 'Enable image for mobile?',
                         'fieldType' => 'checkbox',
                         'args' => [
@@ -212,9 +196,191 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpImageMobileContent',
+                        'id' => 'kBPPopUpImageMobile',
                         'title' => 'Image (mobile)',
                         'fieldType' => 'image',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'id' => 'kBPPopUpFormSection',
+                'title' => 'Pop up form',
+                'fields' => [
+                    [
+                        'id' => 'kBPPopUpFormEnable',
+                        'title' => 'Enable form?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormEnableMobile',
+                        'title' => 'Enable form for mobile?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormAction',
+                        'title' => 'Form action',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormActionMobile',
+                        'title' => 'Form action (mobile)',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormNameEnable',
+                        'title' => 'Enable name input?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormName',
+                        'title' => 'Name input placeholder',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormNameEnableMobile',
+                        'title' => 'Enable name input for mobile?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormNameMobile',
+                        'title' => 'Name input placeholder',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormEmailEnable',
+                        'title' => 'Enable email input?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormEmail',
+                        'title' => 'Email input placeholder',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormEmailEnableMobile',
+                        'title' => 'Enable email input for mobile?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormEmailMobile',
+                        'title' => 'Email input placeholder',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormPrivacyEnable',
+                        'title' => 'Enable privacy policy checkbox?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormPrivacyAnchor',
+                        'title' => 'Privacy policy site',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormPrivacyText',
+                        'title' => 'Privacy policy text',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormPrivacyEnableMobile',
+                        'title' => 'Enable privacy policy checkbox for mobile?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormPrivacyAnchorMobile',
+                        'title' => 'Privacy policy site (mobile)',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormPrivacyTextMobile',
+                        'title' => 'Privacy policy text (mobile)',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormMarketingEnable',
+                        'title' => 'Enable marketing checkbox?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormMarketing',
+                        'title' => 'Marketing text',
+                        'fieldType' => 'text',
+                        'args' => [
+                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormMarketingEnableMobile',
+                        'title' => 'Enable marketing checkbox for mobile?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormMarketingMobile',
+                        'title' => 'Marketing text (mobile)',
+                        'fieldType' => 'text',
                         'args' => [
                             'class' => 'example'
                         ]

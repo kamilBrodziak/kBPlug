@@ -6,9 +6,10 @@
         <div id="kBPluginPopUpSettings" class="kBPluginSettingsWithMenu">
             <ul id="popUpSettingsList" class="kBPluginMenu">
                 <li id="popUpSettingsListItemHeader" class="active">Header</li>
-                <li id="popUpSettingsListItemSubHeader" class="">SubHeader</li>
+                <li id="popUpSettingsListItemSubHeader" class="">Subheader</li>
                 <li id="popUpSettingsListItemDescription" class="">Description</li>
                 <li id="popUpSettingsListItemImage" class="">Image</li>
+                <li id="popUpSettingsListItemPopUp" class="">Form</li>
             </ul>
             <?php
                 settings_fields('kBPluginPopUp');

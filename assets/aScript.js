@@ -1,13 +1,13 @@
 $(document).ready(function($) {
     let mediaUploadInputs = {
-        'uploadButtonForkBPPopUpImageContent': {
-            "hiddenInputId" : "kBPPopUpImageContent",
-            "imgTagId": "imgkBPPopUpImageContent",
+        'uploadButtonForkBPPopUpImage': {
+            "hiddenInputId" : "kBPPopUpImage",
+            "imgTagId": "imgkBPPopUpImage",
             "mediaUploaderTitle": "Choose a pop up picture"
         },
-        'uploadButtonForkBPPopUpImageMobileContent': {
-            "hiddenInputId" : "kBPPopUpImageMobileContent",
-            "imgTagId": "imgkBPPopUpImageMobileContent",
+        'uploadButtonForkBPPopUpImageMobile': {
+            "hiddenInputId" : "kBPPopUpImageMobile",
+            "imgTagId": "imgkBPPopUpImageMobile",
             "mediaUploaderTitle": "Choose a mobile pop up image"
         }
     };

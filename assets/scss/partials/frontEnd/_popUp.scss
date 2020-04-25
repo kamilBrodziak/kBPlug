@@ -1,10 +1,115 @@
 #kBPPopUp {
-    position: absolute;
-    display: block;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     z-index: 1000;
+    box-sizing: border-box;
+    padding: 10% 5% 10% 5%;
     background-color: white;
     left: 0;
     top: 0;
+    font-size: 20px;
+}
+
+@media only screen and (min-width: 992px) {
+    #kBPPopUp {
+        flex-direction: row;
+    }
+}
+
+
+
+.kBPPopUpContentMobile {
+    display: initial;
+}
+
+.kBPPopUpContentDesktop {
+    display: none;
+}
+
+@media only screen and (min-width: 992px) {
+    .kBPPopUpContentMobile {
+        display: none;
+    }
+
+    .kBPPopUpContentDesktop {
+        display: initial;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #kBPPopUpImgContainer {
+        width: 40%;
+        height: auto;
+        box-sizing: border-box;
+    }
+
+    #kBPPopUpImg {
+        width: 100%;
+        height: auto;
+    }
+
+    #kBPPopUpContent {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #kBPPopUpTitle, #kBPPopUpSubHeader, #kBPPopUpDescription, #kBPPopUpForm {
+        text-align: center;
+    }
+
+    #kBPPopUpDescription {
+        height: auto;
+    }
+
+    #kBPPopUpForm {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        height: 60%;
+        width: 80%;
+        label {
+            overflow: visible;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+
+            &:not(.kBPCheckboxLabel) {
+                flex-direction: column;
+            }
+
+            a, span {
+                width: 80%;
+                box-sizing: border-box;
+                padding-left: 5%;
+                text-align: left;
+            }
+        }
+
+        input {
+
+            &:not([type="checkbox"]) {
+                display: block;
+                width: 100%;
+            }
+
+            &[type="checkbox"] {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+
+    }
 }

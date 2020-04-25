@@ -67,7 +67,7 @@ class SettingsCallbacks {
     public function kBPFeaturesSection() {}
 	public function kBPPopUpHeaderSection() {
     }
-	public function kBPPopUpSubHeaderSection() {
+	public function kBPPopUpSubheaderSection() {
     }
 	public function kBPPopUpDescriptionSection() {
     }
@@ -75,5 +75,9 @@ class SettingsCallbacks {
     }
 
     public function kBPPopUpStyleSection() {
+    }
+
+    public function kBPPopUpFormSection() {
+
     }
 }
