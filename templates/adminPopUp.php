@@ -1,5 +1,5 @@
 <div class="wrap">
-	<h1>Pop up settings, shortcode: [kBPPopUp]</h1>
+	<h1>Pop up settings</h1>
 	<?php settings_errors(); ?>
 
 	<form method="post" action="options.php">
@@ -10,6 +10,7 @@
                 <li id="popUpSettingsListItemDescription" class="">Description</li>
                 <li id="popUpSettingsListItemImage" class="">Image</li>
                 <li id="popUpSettingsListItemPopUp" class="">Form</li>
+                <li id="popUpSettingsListItemMode" class="">Mode</li>
             </ul>
             <?php
                 settings_fields('kBPluginPopUp');

@@ -11,6 +11,21 @@ class Enqueue extends BaseController {
         add_action('admin_enqueue_scripts', array($this, 'enqueueAdmin'));
         if($this->isActivated('kBPPopUpEnable')) {
             add_action('wp_enqueue_scripts', array($this, 'enqueuePopUp'));
+            add_filter('script_loader_tag', array($this, 'addAsyncOrDefer'), 10, 2);
+        }
+    }
+
+    function addAsyncOrDefer($tag, $handle) {
+        if(!is_admin()) {
+            if (strpos($handle, 'async') !== false) {
+                return str_replace('<script ', '<script async ', $tag);
+            } else if (strpos($handle, 'defer') !== false) {
+                return str_replace('<script ', '<script defer ', $tag);
+            } else {
+                return $tag;
+            }
+        } else {
+            return $tag;
         }
     }
 
@@ -35,5 +50,7 @@ class Enqueue extends BaseController {
         } else {
             wp_enqueue_style('kBPfStyle', $this->pluginUrl . 'assets/css/fStyle.css');
         }
+
+        wp_enqueue_script('fScript-defer', $this->pluginUrl . 'assets/fScript.js', array('jquery'), "1.0", true);
     }
 }

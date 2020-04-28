@@ -80,7 +80,7 @@ class SettingsApi {
 			];
 
 			foreach ($section['fields'] as $field) {
-				$sectionTemp['fields'][] = [
+                $sectionTemp['fields'][] = [
 					'id' => $field['id'],
 					'title' => $field['title'],
 					'callback' => array($this->settingsCallbacks, $field['fieldType'] . 'Field'),
@@ -88,10 +88,11 @@ class SettingsApi {
 					'args' => [
 						'optionName' => $pageSlug,
 						'labelFor' => $field['id'],
-						'class' => isset($field['args']['class']) ? $field['args']['class'] : ''
+						'class' => isset($field['args']['class']) ? $field['args']['class'] : '',
+                        'label' => isset($field['args']['label']) ? $field['args']['label'] : ''
 					]
 				];
-			}
+            }
 			$sectionsOutput[] = $sectionTemp;
 		}
 		$this->sections = $sectionsOutput;

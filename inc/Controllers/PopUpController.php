@@ -70,7 +70,6 @@ class PopUpController extends BaseController {
                         'title' => 'Header text',
                         'fieldType' => 'textarea',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
@@ -86,7 +85,6 @@ class PopUpController extends BaseController {
                         'title' => 'Header text (mobile)',
                         'fieldType' => 'textarea',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ]
                 ]
@@ -108,7 +106,6 @@ class PopUpController extends BaseController {
                         'title' => 'Subheader text',
                         'fieldType' => 'textarea',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
@@ -124,7 +121,6 @@ class PopUpController extends BaseController {
                         'title' => 'Subheader text (mobile)',
                         'fieldType' => 'textarea',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ]
                 ]
@@ -146,7 +142,6 @@ class PopUpController extends BaseController {
                         'title' => 'Description text',
                         'fieldType' => 'textarea',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
@@ -162,7 +157,6 @@ class PopUpController extends BaseController {
                         'title' => 'Description text (mobile)',
                         'fieldType' => 'textarea',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ]
                 ]
@@ -184,7 +178,6 @@ class PopUpController extends BaseController {
                         'title' => 'Image',
                         'fieldType' => 'image',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
@@ -200,7 +193,6 @@ class PopUpController extends BaseController {
                         'title' => 'Image (mobile)',
                         'fieldType' => 'image',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ]
                 ]
@@ -230,7 +222,6 @@ class PopUpController extends BaseController {
                         'title' => 'Form action',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
@@ -238,7 +229,6 @@ class PopUpController extends BaseController {
                         'title' => 'Form action (mobile)',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
@@ -250,11 +240,17 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpFormName',
+                        'id' => 'kBPPopUpFormNameLabel',
+                        'title' => 'Name input label',
+                        'fieldType' => 'text',
+                        'args' => [
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormNamePlaceholder',
                         'title' => 'Name input placeholder',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
@@ -266,11 +262,17 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpFormNameMobile',
-                        'title' => 'Name input placeholder',
+                        'id' => 'kBPPopUpFormNameLabelMobile',
+                        'title' => 'Name input label (mobile)',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormNamePlaceholderMobile',
+                        'title' => 'Name input placeholder (mobile)',
+                        'fieldType' => 'text',
+                        'args' => [
                         ]
                     ],
                     [
@@ -282,11 +284,17 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpFormEmail',
+                        'id' => 'kBPPopUpFormEmailLabel',
+                        'title' => 'Email input label',
+                        'fieldType' => 'text',
+                        'args' => [
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormEmailPlaceholder',
                         'title' => 'Email input placeholder',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
@@ -298,11 +306,17 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpFormEmailMobile',
-                        'title' => 'Email input placeholder',
+                        'id' => 'kBPPopUpFormEmailLabelMobile',
+                        'title' => 'Email input label (mobile)',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormEmailPlaceholderMobile',
+                        'title' => 'Email input placeholder (mobile)',
+                        'fieldType' => 'text',
+                        'args' => [
                         ]
                     ],
                     [
@@ -318,15 +332,27 @@ class PopUpController extends BaseController {
                         'title' => 'Privacy policy site',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpFormPrivacyText',
-                        'title' => 'Privacy policy text',
+                        'id' => 'kBPPopUpFormPrivacyLeftText',
+                        'title' => 'Privacy policy text before anchor',
+                        'fieldType' => 'textarea',
+                        'args' => [
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormPrivacyAnchorText',
+                        'title' => 'Privacy policy anchor text',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormPrivacyRightText',
+                        'title' => 'Privacy policy text after anchor',
+                        'fieldType' => 'textarea',
+                        'args' => [
                         ]
                     ],
                     [
@@ -342,15 +368,27 @@ class PopUpController extends BaseController {
                         'title' => 'Privacy policy site (mobile)',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
-                        'id' => 'kBPPopUpFormPrivacyTextMobile',
-                        'title' => 'Privacy policy text (mobile)',
+                        'id' => 'kBPPopUpFormPrivacyLeftTextMobile',
+                        'title' => 'Privacy policy text before anchor (mobile)',
+                        'fieldType' => 'textarea',
+                        'args' => [
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormPrivacyAnchorTextMobile',
+                        'title' => 'Privacy policy anchor text (mobile)',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormPrivacyRightTextMobile',
+                        'title' => 'Privacy policy text after anchor (mobile)',
+                        'fieldType' => 'textarea',
+                        'args' => [
                         ]
                     ],
                     [
@@ -364,9 +402,8 @@ class PopUpController extends BaseController {
                     [
                         'id' => 'kBPPopUpFormMarketing',
                         'title' => 'Marketing text',
-                        'fieldType' => 'text',
+                        'fieldType' => 'textarea',
                         'args' => [
-                            'class' => 'example'
                         ]
                     ],
                     [
@@ -380,9 +417,53 @@ class PopUpController extends BaseController {
                     [
                         'id' => 'kBPPopUpFormMarketingMobile',
                         'title' => 'Marketing text (mobile)',
+                        'fieldType' => 'textarea',
+                        'args' => [
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormSubmit',
+                        'title' => 'Submit button text',
                         'fieldType' => 'text',
                         'args' => [
-                            'class' => 'example'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormSubmitMobile',
+                        'title' => 'Submit button text (mobile)',
+                        'fieldType' => 'text',
+                        'args' => [
+                        ]
+                    ]
+                ]
+            ],
+            [
+                'id' => 'kBPPopUpModeSection',
+                'title' => 'Pop up mode',
+                'fields' => [
+                    [
+                        'id' => 'kBPPopUpModeDelay',
+                        'title' => 'Pop up delay(seconds)',
+                        'fieldType' => 'number',
+                        'args' => [
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpModeRepetitionEnable',
+                        'title' => 'Enable custom repetition?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle',
+                            'label' => 'Default is: always display once after user enter or refresh a page on domain'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpModeRepetition',
+                        'title' => 'Pop up repetition after closing(minutes)',
+                        'fieldType' => 'numbersSeparated',
+                        'args' => [
+                            'label' => 'If you want many times display pop up, for example second time after 2 minutes, third time after 5 minutes, write 2;5.' .
+                                ' If you want display only one time - write 525600(minutes in one year)). '
                         ]
                     ]
                 ]

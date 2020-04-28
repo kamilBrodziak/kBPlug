@@ -81,4 +81,8 @@ div.uiToggle label:hover, div.uiToggle label > div:hover {
   height: 400px;
 }
 
+input[type=text] {
+  width: 50%;
+}
+
 /*# sourceMappingURL=aStyle.css.map */

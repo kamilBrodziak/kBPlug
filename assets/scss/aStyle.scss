@@ -1,3 +1,7 @@
 @import "partials/admin/checkbox";
 @import "partials/admin/menu";
 @import "partials/admin/customCSS";
+
+input[type=text] {
+    width: 50%;
+}

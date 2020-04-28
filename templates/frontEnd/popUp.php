@@ -31,36 +31,67 @@
     $formActionMobile = (isset($option['kBPPopUpFormActionMobile']) && $formEnableMobile)
         ? $option['kBPPopUpFormActionMobile'] : '';
     $formNameEnable = isset($option['kBPPopUpFormNameEnable']) ? $option['kBPPopUpFormNameEnable'] : false;
-    $formName = (isset($option['kBPPopUpFormName']) && $formNameEnable)
-        ? $option['kBPPopUpFormName'] : '';;
+    $formNameLabel = (isset($option['kBPPopUpFormNameLabel']) && $formNameEnable)
+        ? $option['kBPPopUpFormNameLabel'] : '';
+    $formNamePlaceholder = (isset($option['kBPPopUpFormNamePlaceholder']) && $formNameEnable)
+        ? $option['kBPPopUpFormNamePlaceholder'] : '';
     $formNameEnableMobile = isset($option['kBPPopUpFormNameEnableMobile']) ? $option['kBPPopUpFormNameEnableMobile'] : false;
-    $formNameMobile = (isset($option['kBPPopUpFormNameMobile']) && $formNameEnableMobile)
-        ? $option['kBPPopUpFormNameMobile'] : '';;
+    $formNameLabelMobile = (isset($option['kBPPopUpFormNameLabelMobile']) && $formNameEnableMobile)
+        ? $option['kBPPopUpFormNameLabelMobile'] : '';
+    $formNamePlaceholderMobile = (isset($option['kBPPopUpFormNamePlaceholderMobile']) && $formNameEnableMobile)
+        ? $option['kBPPopUpFormNamePlaceholderMobile'] : '';
     $formEmailEnable = isset($option['kBPPopUpFormEmailEnable']) ? $option['kBPPopUpFormEmailEnable'] : false;
-    $formEmail = (isset($option['kBPPopUpFormEmail']) && $formEmailEnable)
-        ? $option['kBPPopUpFormEmail'] : '';;
+    $formEmailLabel = (isset($option['kBPPopUpFormEmailLabel']) && $formEmailEnable)
+        ? $option['kBPPopUpFormEmailLabel'] : '';
+    $formEmailPlaceholder = (isset($option['kBPPopUpFormEmailPlaceholder']) && $formEmailEnable)
+        ? $option['kBPPopUpFormEmailPlaceholder'] : '';
     $formEmailEnableMobile = isset($option['kBPPopUpFormEmailEnableMobile']) ? $option['kBPPopUpFormEmailEnableMobile'] : false;
-    $formEmailMobile = (isset($option['kBPPopUpFormEmailMobile']) && $formEmailEnableMobile)
-        ? $option['kBPPopUpFormEmailMobile'] : '';;
+    $formEmailLabelMobile = (isset($option['kBPPopUpFormEmailLabelMobile']) && $formEmailEnableMobile)
+        ? $option['kBPPopUpFormEmailLabelMobile'] : '';
+    $formEmailPlaceholderMobile = (isset($option['kBPPopUpFormEmailPlaceholderMobile']) && $formEmailEnableMobile)
+        ? $option['kBPPopUpFormEmailPlaceholderMobile'] : '';
     $formPrivacyEnable = isset($option['kBPPopUpFormPrivacyEnable']) ? $option['kBPPopUpFormPrivacyEnable'] : false;
-    $formPrivacy = (isset($option['kBPPopUpFormPrivacyText']) && $formPrivacyEnable)
-        ? $option['kBPPopUpFormPrivacyText'] : '';;
+    $formPrivacyLeftText = (isset($option['kBPPopUpFormPrivacyLeftText']) && $formPrivacyEnable)
+        ? $option['kBPPopUpFormPrivacyLeftText'] : '';
+    $formPrivacyAnchorText = (isset($option['kBPPopUpFormPrivacyAnchorText']) && $formPrivacyEnable)
+        ? $option['kBPPopUpFormPrivacyAnchorText'] : '';
+    $formPrivacyRightText = (isset($option['kBPPopUpFormPrivacyRightText']) && $formPrivacyEnable)
+        ? $option['kBPPopUpFormPrivacyRightText'] : '';
     $formPrivacyAnchor = (isset($option['kBPPopUpFormAnchor']) && $formPrivacyEnable)
         ? $option['kBPPopUpFormAction'] : '';;
     $formPrivacyEnableMobile = isset($option['kBPPopUpFormPrivacyEnableMobile']) ? $option['kBPPopUpFormPrivacyEnableMobile'] : false;
-    $formPrivacyMobile = (isset($option['kBPPopUpFormPrivacyTextMobile']) && $formPrivacyEnableMobile)
-        ? $option['kBPPopUpFormPrivacyTextMobile'] : '';;
+    $formPrivacyLeftTextMobile = (isset($option['kBPPopUpFormPrivacyLeftTextMobile']) && $formPrivacyEnable)
+        ? $option['kBPPopUpFormPrivacyLeftTextMobile'] : '';
+    $formPrivacyAnchorTextMobile = (isset($option['kBPPopUpFormPrivacyAnchorTextMobile']) && $formPrivacyEnable)
+        ? $option['kBPPopUpFormPrivacyAnchorTextMobile'] : '';
+    $formPrivacyRightTextMobile = (isset($option['kBPPopUpFormPrivacyRightTextMobile']) && $formPrivacyEnable)
+        ? $option['kBPPopUpFormPrivacyRightTextMobile'] : '';
     $formPrivacyAnchorMobile = (isset($option['kBPPopUpFormPrivacyAnchorMobile']) && $formPrivacyEnableMobile)
         ? $option['kBPPopUpFormPrivacyAnchorMobile'] : '';;
     $formMarketingEnable = isset($option['kBPPopUpFormMarketingEnable']) ? $option['kBPPopUpFormMarketingEnable'] : false;
     $formMarketing = (isset($option['kBPPopUpFormMarketing']) && $formMarketingEnable)
-        ? $option['kBPPopUpFormMarketing'] : '';;
+        ? $option['kBPPopUpFormMarketing'] : '';
     $formMarketingEnableMobile = isset($option['kBPPopUpFormMarketingEnableMobile']) ? $option['kBPPopUpFormMarketingEnableMobile'] : false;
     $formMarketingMobile = (isset($option['kBPPopUpFormMarketingMobile']) && $formMarketingEnableMobile)
-        ? $option['kBPPopUpFormMarketingMobile'] : '';;
+        ? $option['kBPPopUpFormMarketingMobile'] : '';
+    $formSubmit = (isset($option['kBPPopUpFormSubmit']))
+        ? $option['kBPPopUpFormSubmit'] : '';
+    $formSubmitMobile = (isset($option['kBPPopUpFormSubmitMobile']))
+        ? $option['kBPPopUpFormSubmitMobile'] : '';
+    $kBPPopUpModeDelay = isset($option['kBPPopUpModeDelay'])
+        ? $option['kBPPopUpModeDelay'] : 0;
+    $customModeRepetitionEnable = isset($option['kBPPopUpModeRepetitionEnable']) ? $option['kBPPopUpModeRepetitionEnable'] : false;
+    $kBPPopUpModeRepetition = (isset($option['kBPPopUpModeRepetition']) && $customModeRepetitionEnable)
+        ? $option['kBPPopUpModeRepetition'] : '';
 ?>
 
-<aside id="kBPPopUp">
+<aside id="kBPPopUp" data-delay="<?php echo $kBPPopUpModeDelay; ?>" data-repetition="<?php echo $kBPPopUpModeRepetition; ?>" >
+    <div id="kBPPopUpCloseButtonContainer">
+        <a id='kBPPopUpCloseButton' href="#">
+            <div class="kBPPopUpCloseButtonPart"></div>
+            <div class="kBPPopUpCloseButtonPart"></div>
+        </a>
+    </div>
     <?php if($imageEnable) : ?>
         <figure id="kBPPopUpImgContainer" class="kBPPopUpContentDesktop">
             <img src="<?php echo $imageSRC; ?>" alt="Newsletter image" id="kBPPopUpImg"/>
@@ -72,77 +103,82 @@
         </figure>
     <?php endif ?>
     <div id="kBPPopUpContent">
-        <?php if($headerEnable) : ?>
-            <h2 id="kBPPopUpTitle" class="kBPPopUpContentDesktop"><?php echo $header; ?></h2>
-        <?php endif ?>
-        <?php if($headerEnableMobile) : ?>
-            <h2 id="kBPPopUpTitleMobile" class="kBPPopUpContentMobile"><?php echo $headerMobile; ?></h2>
-        <?php endif ?>
-        <?php if($subheaderEnable) : ?>
-            <h3 id="kBPPopUpSubHeader" class="kBPPopUpContentDesktop"><?php echo $subheader; ?></h3>
-        <?php endif ?>
-        <?php if($subheaderEnableMobile) : ?>
-            <h3 id="kBPPopUpSubHeaderMobile" class="kBPPopUpContentMobile"><?php echo $subheaderMobile; ?></h3>
-        <?php endif ?>
-        <?php if($descriptionEnable) : ?>
-            <div id="kBPPopUpDescription" class="kBPPopUpContentDesktop"><?php echo $description; ?></div>
-        <?php endif ?>
-        <?php if($descriptionEnableMobile) : ?>
-            <div id="kBPPopUpDescriptionMobile" class="kBPPopUpContentMobile"><?php echo $descriptionMobile; ?></div>
-        <?php endif ?>
+        <h2 id="kBPPopUpTitle">
+            <span class="kBPPopUpContentDesktop"><?php echo $header; ?></span>
+            <span class="kBPPopUpContentMobile"><?php echo $headerMobile; ?></span>
+        </h2>
+        <h3 id="kBPPopUpSubHeader">
+            <span class="kBPPopUpContentDesktop"><?php echo $subheader; ?></span>
+            <span class="kBPPopUpContentMobile"><?php echo $subheaderMobile; ?></span>
+        </h3>
+        <div id="kBPPopUpDescription">
+            <span class="kBPPopUpContentDesktop"><?php echo $description; ?></span>
+            <span class="kBPPopUpContentMobile"><?php echo $descriptionMobile; ?></span>
+        </div>
         <?php if($formEnable) : ?>
             <form id="kBPPopUpForm" class="kBPPopUpContentDesktop" target="_blank" action="<?php echo $formAction ?>">
                 <?php if($formNameEnable) : ?>
                     <label for="kBPopUpFormName">
-                        Test:
-                        <input type='text' name='name' id="kBPopUpFormName" required placeholder='<?php echo $formName; ?>'>
+                        <?php echo $formNameLabel; ?>
+                        <input type='text' name='name' id="kBPopUpFormName" required placeholder='<?php echo $formNamePlaceholder; ?>'>
                     </label>
                 <?php endif ?>
                 <?php if($formEmailEnable) : ?>
                     <label for="kBPPopUpFormEmail">
-                        <input type='email' id='kBPPopUpFormEmail' name='email' required placeholder='<?php echo $formEmail; ?>'>
+                        <?php echo $formEmailLabel; ?>
+                        <input type='email' id='kBPPopUpFormEmail' name='email' required placeholder='<?php echo $formEmailPlaceholder; ?>'>
                     </label>
                 <?php endif ?>
                 <?php if($formPrivacyEnable) : ?>
-                    <label for="kBPPopUpFormPrivacyPolicy" class="kBPCheckboxLabel">
+                    <label for="kBPPopUpFormPrivacy" class="kBPCheckboxLabel">
                         <input type='checkbox' name='polityka' required id='kBPPopUpFormPrivacy'>
-                        <a href='<?php echo $formPrivacyAnchor; ?>' target='_blank'><?php echo $formPrivacy; ?></a>
+                        <span class="kBPPopUpFormCheckboxInfo">
+                            <?php echo $formPrivacyLeftText; ?>
+                            <a href='<?php echo $formPrivacyAnchor ; ?>' target='_blank'><?php echo "&nbsp;$formPrivacyAnchorText&nbsp;"; ?></a>
+                            <?php echo $formPrivacyRightText; ?>
+                        </span>
                     </label>
                 <?php endif ?>
                 <?php if($formMarketingEnable) : ?>
                     <label for="kBPPopUpFormMarketing" class="kBPCheckboxLabel">
                         <input type='checkbox' name='marketing' required id='kBPPopUpFormMarketing'>
-                        <span><?php echo $formMarketing;?></span>
+                        <span class="kBPPopUpFormCheckboxInfo"><?php echo $formMarketing;?></span>
                     </label>
                 <?php endif ?>
-                <input type="submit" value="Zapisz mnie"/>
+                <input type="submit" value="<?php echo $formSubmit; ?>"/>
             </form>
         <?php endif ?>
         <?php if($formEnableMobile) : ?>
             <form id="kBPPopUpFormMobile" class="kBPPopUpContentMobile" target="_blank" action="<?php echo $formActionMobile ?>">
                 <?php if($formNameEnableMobile) : ?>
-                    <label for="kBPopUpFormName">
-                        <input type='text' name='name' id="kBPopUpFormNameMobile" required placeholder='<?php echo $formNameMobile; ?>'>
+                    <label for="kBPopUpFormNameMobile">
+                        <?php echo $formNameLabelMobile; ?>
+                        <input type='text' name='name' id="kBPopUpFormNameMobile" required placeholder='<?php echo $formNamePlaceholderMobile; ?>'>
                     </label>
                 <?php endif ?>
                 <?php if($formEmailEnableMobile) : ?>
-                    <label for="kBPPopUpFormEmail">
-                        <input type='email' id='kBPPopUpFormEmailMobile' name='email' required placeholder='<?php echo $formEmailMobile; ?>'>
+                    <label for="kBPPopUpFormEmailMobile">
+                        <?php echo $formEmailLabelMobile; ?>
+                        <input type='email' id='kBPPopUpFormEmailMobile' name='email' required placeholder='<?php echo $formEmailPlaceholderMobile; ?>'>
                     </label>
                 <?php endif ?>
                 <?php if($formPrivacyEnableMobile) : ?>
-                    <label for="kBPPopUpFormPrivacyPolicy" class="kBPCheckboxLabel">
+                    <label for="kBPPopUpFormPrivacyMobile" class="kBPCheckboxLabel">
                         <input type='checkbox' name='polityka' required id='kBPPopUpFormPrivacyMobile'>
-                        <a href='<?php echo $formPrivacyAnchorMobile; ?> target='_blank'><?php echo $formPrivacy; ?></a>
+                        <span class="kBPPopUpFormCheckboxInfo">
+                            <?php echo $formPrivacyLeftTextMobile; ?>
+                            <a href='<?php echo " " . $formPrivacyAnchorMobile . " "; ?>' target='_blank'><?php echo "&nbsp;$formPrivacyAnchorTextMobile&nbsp;"; ?></a>
+                            <?php echo $formPrivacyRightTextMobile; ?>
+                        </span>
                     </label>
                 <?php endif ?>
                 <?php if($formMarketingEnableMobile) : ?>
-                    <label for="kBPPopUpFormMarketing" class="kBPCheckboxLabel">
+                    <label for="kBPPopUpFormMarketingMobile" class="kBPCheckboxLabel">
                         <input type='checkbox' name='marketing' required id='kBPPopUpFormMarketingMobile'>
-                        <span><?php echo $formMarketingMobile;?></span>
+                        <span class="kBPPopUpFormCheckboxInfo"><?php echo $formMarketingMobile;?></span>
                     </label>
                 <?php endif ?>
-                <input type="submit" value="Zapisz mnie"/>
+                <input type="submit" value="<?php echo $formSubmitMobile; ?>"/>
             </form>
         <?php endif ?>
     </div>
