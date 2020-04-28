@@ -40,7 +40,6 @@ class Enqueue extends BaseController {
         if('kbplugin_page_kBPluginCustomCSS' == $hook) {
             wp_enqueue_script('ace', $this->pluginUrl . 'assets/js/ace/ace.js', array('jquery'), null, true);
             wp_enqueue_script('customCSS', $this->pluginUrl . 'assets/js/admin/customCSS.js', array('jqueryMin'), null, true);
-
         }
     }
 
@@ -48,9 +47,9 @@ class Enqueue extends BaseController {
         if($this->isActivated('kBPCustomCSSEnable') && file_exists($this->pluginPath . 'assets/css/fcStyle.min.css')) {
             wp_enqueue_style('kBPfStyle', $this->pluginUrl . 'assets/css/fcStyle.min.css');
         } else {
-            wp_enqueue_style('kBPfStyle', $this->pluginUrl . 'assets/css/fStyle.css');
+            wp_enqueue_style('kBPfStyle', $this->pluginUrl . 'assets/css/fStyle.min.css');
         }
 
-        wp_enqueue_script('fScript-defer', $this->pluginUrl . 'assets/fScript.js', array('jquery'), "1.0", true);
+        wp_enqueue_script('fScript-defer', $this->pluginUrl . 'assets/fScript.min.js', array('jquery'), "1.0", true);
     }
 }

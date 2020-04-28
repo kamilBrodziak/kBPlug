@@ -71,7 +71,7 @@ div.uiToggle label:hover, div.uiToggle label > div:hover {
   display: none;
 }
 
-#kBPCustomCSS {
+#kBPCustomCSS, #kBPCustomCSSMinified {
   display: none;
 }
 

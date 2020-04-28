@@ -13,8 +13,8 @@ class AceEditor {
     addUpdatingTextarea(textareaID, formID) {
         let self = this;
         $("#" + formID).on('submit', function() {
-            $("#" + textareaID).val(self.aceEditor.getSession().getValue());
+            let value = self.aceEditor.getSession().getValue();
+            $("#" + textareaID).val(value);
         })
-
     }
 }

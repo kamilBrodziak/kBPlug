@@ -1,0 +1,23 @@
+{
+  "name": "kbplug",
+  "version": "1.0.0",
+  "description": "kBPlug plugin created by Kamil Brodziak",
+  "main": "index.js",
+  "dependencies": {
+    "csso": "^4.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kamilBrodziak/kBPlug.git"
+  },
+  "author": "Kamil Brodziak",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/kamilBrodziak/kBPlug/issues"
+  },
+  "homepage": "https://github.com/kamilBrodziak/kBPlug#readme"
+}

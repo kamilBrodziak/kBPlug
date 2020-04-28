@@ -10,10 +10,54 @@
     } else if(isset($_POST['kBPCustomCSS'])) {
         $cssContent = esc_textarea($_POST['kBPCustomCSS']);
         file_put_contents(plugin_dir_path(dirname(__FILE__, 1)) . 'assets/css/fcStyle.css', $cssContent);
-        $cssContentWithoutComments = preg_replace('#/\*(?:.(?!/)|[^\*](?=/)|(?<!\*)/)*\*/#s', '', $cssContent);
-        $cssContentMinify = str_replace(array("\r", "\n", " "), '', $cssContentWithoutComments);
-        file_put_contents(plugin_dir_path(dirname(__FILE__, 1)) . 'assets/css/fcStyle.min.css', $cssContentMinify);
+        file_put_contents(plugin_dir_path(dirname(__FILE__, 1)) . 'assets/css/fcStyle.min.css', minify_css($cssContent));
     }
+
+function minify_css( $string = '' ) {
+    $comments = <<<'EOS'
+    (?sx)
+        # don't change anything inside of quotes
+        ( "(?:[^"\\]++|\\.)*+" | '(?:[^'\\]++|\\.)*+' )
+    |
+        # comments
+        /\* (?> .*? \*/ )
+    EOS;
+
+        $everything_else = <<<'EOS'
+    (?six)
+        # don't change anything inside of quotes
+        ( "(?:[^"\\]++|\\.)*+" | '(?:[^'\\]++|\\.)*+' )
+    |
+        # spaces before and after ; and }
+        \s*+ ; \s*+ ( } ) \s*+
+    |
+        # all spaces around meta chars/operators (excluding + and -)
+        \s*+ ( [*$~^|]?+= | [{};,>~] | !important\b ) \s*+
+    |
+        # all spaces around + and - (in selectors only!)
+        \s*([+-])\s*(?=[^}]*{)
+    |
+        # spaces right of ( [ :
+        ( [[(:] ) \s++
+    |
+        # spaces left of ) ]
+        \s++ ( [])] )
+    |
+        # spaces left (and right) of : (but not in selectors)!
+        \s+(:)(?![^\}]*\{)
+    |
+        # spaces at beginning/end of string
+        ^ \s++ | \s++ \z
+    |
+        # double spaces to single
+        (\s)\s+
+    EOS;
+
+    $search_patterns  = array( "%{$comments}%", "%{$everything_else}%" );
+    $replace_patterns = array( '$1', '$1$2$3$4$5$6$7$8' );
+
+    return preg_replace( $search_patterns, $replace_patterns, $string );
+}
 ?>
 
 <div class="wrap">

@@ -1,38 +1,40 @@
 $(function() {
     let popUpDOM = $("#kBPPopUp");
-    let popUp = new PopUp(popUpDOM, parseInt(popUpDOM.data('delay')), popUpDOM.data('repetition'),
-        $("#kBPPopUpCloseButton"), [$('#kBPPopUpForm'), $('#kBPPopUpFormMobile')]);
+    let popUp = new PopUp(popUpDOM, parseInt(popUpDOM.data('delay'), 10), popUpDOM.data('repetition'),
+        $("#kBPPopUpCloseButton"), ['kBPPopUpForm', 'kBPPopUpFormMobile']);
     popUp.launch();
 });
 
 class PopUp {
-    constructor(popUp, delay, repetition, closeButton, forms) {
+    constructor(popUp, delay, repetition, closeButton, formIDs) {
         this.popUp = popUp;
         this.delay = delay;
         this.repetition = repetition;
         this.closeButton = closeButton;
-        this.forms = forms;
+        this.formIDs = formIDs;
         this.closeClicked = false;
         this.submitted = false;
         this.opened = false;
     }
 
     launch() {
-        if(localStorage.getItem('isSubmitted') === null) {
+
+        if(window.localStorage.getItem('isSubmitted') === null) {
             if (this.repetition === "") {
                 // EVERY LAUNCH IF REPETITION NOT SET
                 this.showPopUpWithDelay(this.delay);
-                console.log('1');
-            } else if (this.repetition !== localStorage.getItem('repetition')) {
+            } else if (this.repetition !== window.localStorage.getItem('repetition')) {
                 // FIRST LAUNCH WHEN REPETITION SET OR DIFFERENT REPETITION SET AND USER FOR THE FIRST TIME ENTER DOMAIN
                 let repetitionOrder = 0;
                 let dateLaunch = 0;
-                localStorage.setItem('repetition', this.repetition);
+                window.localStorage.setItem('repetition', this.repetition);
                 this.showPopUpInterval(dateLaunch, repetitionOrder, this.delay);
-            } else if (this.repetition === localStorage.getItem('repetition')) {
+            } else if (this.repetition === window.localStorage.getItem('repetition')) {
                 // NEXT LAUNCHES WHEN REPETITION SET AND WHEN USER AGAIN ENTER DOMAIN OR CHANGE PAGE
-                let repetitionOrder = (localStorage.getItem('repetitionOrder') !== null) ? parseInt(localStorage.getItem('repetitionOrder')) : 0;
-                let dateLaunch = (localStorage.getItem('dateLaunch') !== null) ? parseInt(localStorage.getItem('dateLaunch')) : 0;
+                let repetitionOrder = (window.localStorage.getItem('repetitionOrder') !== null) ?
+                    parseInt(window.localStorage.getItem('repetitionOrder'), 10) : 0;
+                let dateLaunch = (window.localStorage.getItem('dateLaunch') !== null) ?
+                    parseInt(window.localStorage.getItem('dateLaunch'), 10) : 0;
                 let delay = (Date.now() > dateLaunch) ? this.delay : 0;
                 this.showPopUpInterval(dateLaunch, repetitionOrder, delay);
             }
@@ -44,17 +46,14 @@ class PopUp {
         let self = this;
         let interval = setInterval(function () {
             if(self.submitted) {
-                console.log('x');
                 clearInterval(interval);
             } else if(Date.now() > dateLaunch && !self.opened && !self.closeClicked) {
-                console.log('y');
                 self.showPopUpWithDelay(delay);
             } else if(Date.now() > dateLaunch && !self.opened && self.closeClicked) {
-                console.log('z');
-                dateLaunch = Date.now() + (parseInt(repetitionArray[repetitionOrder]) * 60 * 1000);
+                dateLaunch = Date.now() + (parseInt(repetitionArray[repetitionOrder], 10) * 60 * 1000);
                 repetitionOrder = (++repetitionOrder % repetitionArray.length);
-                localStorage.setItem('repetitionOrder', repetitionOrder.toString());
-                localStorage.setItem('dateLaunch', dateLaunch.toString());
+                window.localStorage.setItem('repetitionOrder', repetitionOrder.toString());
+                window.localStorage.setItem('dateLaunch', dateLaunch.toString());
                 self.closeClicked = false;
             }
         }, 100);
@@ -90,11 +89,11 @@ class PopUp {
 
     hideForeverAfterSubmit() {
         let self = this;
-        for(let form in this.forms) {
-            form.on('submit', function () {
+        for(let formID in this.formIDs) {
+            $('#' + formID).on('submit', function () {
                 self.hidePopUp();
                 self.submitted = true;
-                localStorage.setItem('isSubmitted', 'true');
+                window.localStorage.setItem('isSubmitted', 'true');
             });
         }
     }
