@@ -1,0 +1,216 @@
+/*
+        By zmienić tło:
+        background: value;
+        Zamiast value może być:
+            a) kolor - np. red, blue, white lub #232323, #ffffff, lub rgb(0,0,0), rgb(22,13,255) lub rgba(0,0,0,0.1)
+                - red, blue, white itd.
+                - w postaci hex czyli # i 6 cyfr/liter (w systemie szesnastkowym) np. #008000 - zielony, #0000FF - niebieski
+                - w postaci rgb np. rgb(0, 0, 255) - niebieski, rgb(255,255,255) - biały
+                - w postaci rgba np. rgba(0, 0, 255, 0.2) - podobnie jak rgb, tylko ostatnia wartość to poziom przezroczystości
+            b) gradient:
+                - linearny - linear-gradient(to side, color stop1, color stop2...), gdzie side to w którą stronę np.
+                                left, right, top, bottom, color to kolor, stop1, stop2 itd to wartość pixelowa lub procentowa
+                                gdzie kolor ma wystąpić, np linear-gradient(to right, white 25%, red 50%, white 75%) spowoduje
+                                że od 0% do 25% będzie biały, następnie biały od 25% będzie przechodził powoli w czerwony aż do 50%,
+                                następnie od 50% czerwony będzie przechodzić w biały do 75%, następnie do końca będzie już biały
+                - radialny - kółeczko, zbyt dużo by opisywać
+                - polecam stronę https://www.gradientmagic.com/, wystarczy wybrać gradient, ewentualnie lekko go
+                    edytować i skopiować css i wkleić tam, gdzie ten gradient chcesz
+
+        By zmienić wielkość czcionki:
+            font-size: ..px;
+            Zamiast .. wpisujesz liczbę
+
+        By zmienić obramowanie
+            border: ..px type color;
+            Zamiast .. liczba, zamiast type typ, np. solid (zwykła prosta ramka, groove - dwukolorowa, dotted - kropkowana)
+                color to wybrany kolor
+
+        By zmienić kolor czcionki:
+            color: value;
+            Zamiast value kolor
+
+        By zmienić grubość tekstu:
+            font-weight: value;
+            Zamiast value to normal - normalny, bold - pogrubiony, bolder - jeszcze bardziej pogrubiony.
+
+        By zmienić wysokość elementu:
+            height: ..px;
+            Zamiast .. liczba.
+
+        By zmienić szerokość elementu:
+            width: ..px;
+            Zamiast .. liczba.
+
+        By dać odstęp na zewnątrz elementu:
+            margin: ..px; - odstęp po lewej, prawej, na górze i dole;
+            margin: ..px ..px ..px ..px; - odstęp po kolei: góra, prawo, dół, lewo
+            margin: ..px ..px; - odstęp po kolei: góra dół, lewo prawo
+            Zamiast .. liczba.
+
+        By dać odstęp wewnątrz elementu:
+            padding: ..px; - odstęp po lewej, prawej, na górze i dole;
+            padding: ..px ..px ..px ..px; - odstęp po kolei: góra, prawo, dół, lewo
+            padding: ..px ..px; - odstęp po kolei: góra dół, lewo prawo
+            Zamiast .. liczba.
+
+
+        Jeśli zmiana czegoś nie działa, spróbuj dodać !important, np:
+            background: white !important;
+*/
+
+
+
+/*
+
+    Ustawienia dla komputerów i telefonów (dla samych komputerów na samym dole poniżej @media)
+
+*/
+
+
+/*
+    Główny kontener popupa, tutaj można zmienić tło całego popupa czy ustawić domyślne parametry dla innych rzeczy
+*/
+#kBPPopUp {
+
+}
+
+/*
+
+    Linki
+
+ */
+.kBPBlackLink {
+
+}
+
+/*
+    Przycisk do zamykania popupa
+*/
+#kBPPopUpCloseButton {
+
+}
+
+/*
+    Kontener zdjęcia
+ */
+#kBPPopUpImgContainer {
+
+}
+
+/*
+    Zdjęcie
+ */
+#kBPPopUpImg {
+
+}
+
+/*
+    Tytuł
+ */
+#kBPPopUpTitle {
+
+}
+
+/*
+    Subtytuł
+ */
+#kBPPopUpSubTitle {
+
+}
+
+
+/*
+    Opis
+*/
+#kBPPopUpDescription {
+
+}
+
+/*
+    Formularz
+ */
+#kBPPopUpForm {
+
+}
+
+/*
+    Input imienia
+ */
+#kBPopUpFormName {
+
+}
+
+/*
+    Opis inputa imienia
+*/
+#kBPPopUpFormNameLabelText {
+
+}
+
+/*
+    Input emaila
+ */
+#kBPopUpFormEmail {
+
+}
+
+/*
+    Opis inputa emaila
+*/
+#kBPPopUpFormEmailLabelText {
+
+}
+
+/*
+    Checkbox polityki prywatności
+ */
+#kBPPopUpFormPrivacy {
+
+}
+
+/*
+    Opis checkboxa polityki prywatności
+*/
+#kBPPopUpFormPrivacyLabelText {
+
+}
+
+/*
+    Checkbox marketingu
+ */
+#kBPPopUpFormMarketing {
+
+}
+
+/*
+    Opis checkboxa marketingu
+*/
+#kBPPopUpFormNameMarketingText {
+
+}
+
+/*
+    Przycisk do wysłania formularza
+ */
+#kBPPopUpFormSubmit {
+
+}
+
+/*
+
+    Ustawienia tylko i wyłącznie dla komputerów
+    Tutaj możesz skopiować wybrany tag np.
+    #kBPPopUpTitle {
+
+    }
+    i dać w środku inne rzeczy, np. background: red; dla komputerów.
+
+*/
+@media all and (min-width: 992px) {
+
+}
+
+
+
+

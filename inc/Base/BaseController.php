@@ -1,9 +1,9 @@
 <?php
 /**
- * @package popUpThat
+ * @package kBPlug
  */
 
-namespace Inc\Base;
+namespace kbPlug\Inc\Base;
 
 
 class BaseController {

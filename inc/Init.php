@@ -3,9 +3,9 @@
  * @package popUpThat
  */
 
-namespace Inc;
+namespace kbPlug\Inc;
 
-use Inc\Base\Activate, Inc\Base\Deactivate;
+use kbPlug\Inc\Base\Activate, kbPlug\Inc\Base\Deactivate;
 
 final class Init {
     public static function registerServices() {

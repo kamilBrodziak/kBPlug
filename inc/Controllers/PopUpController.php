@@ -1,13 +1,13 @@
 <?php
 /**
- * @package popUpThat
+ * @package kBPlug
  */
 
-namespace Inc\Controllers;
+namespace kbPlug\Inc\Controllers;
 
-use Inc\Api\SettingsApi;
-use Inc\Api\Callbacks\AdminCallbacks;
-use Inc\Base\BaseController;
+use kbPlug\Inc\Api\SettingsApi;
+use kbPlug\Inc\Api\Callbacks\AdminCallbacks;
+use kbPlug\Inc\Base\BaseController;
 
 
 class PopUpController extends BaseController {
@@ -19,13 +19,15 @@ class PopUpController extends BaseController {
 
 	public function register() {
 		if($this->isActivated('kBPPopUpEnable')) {
+            include_once "$this->pluginPath/templates/frontend/popUpMobile.php";
+            include_once "$this->pluginPath/inc/Ajax.php";
 			$this->pageSlug = 'kBPluginPopUp';
 			$this->settings = new SettingsApi();
 			$this->callbacks = new AdminCallbacks();
 			$this->setSubPages();
 			$this->setSections();
 			$this->settings->addSubpages($this->subPages)->register();
-			add_action('init', array($this, 'activate'));
+//			add_action('init', array($this, 'activate'));
 		}
 	}
 
@@ -422,6 +424,21 @@ class PopUpController extends BaseController {
                         ]
                     ],
                     [
+                        'id' => 'kBPPopUpFormCaptchaEnable',
+                        'title' => 'Enable Google reCaptcha v3?',
+                        'fieldType' => 'checkbox',
+                        'args' => [
+                            'class' => 'uiToggle'
+                        ]
+                    ],
+                    [
+                        'id' => 'kBPPopUpFormCaptchaSiteKey',
+                        'title' => 'Google reCaptcha v3 site key',
+                        'fieldType' => 'text',
+                        'args' => [
+                        ]
+                    ],
+                    [
                         'id' => 'kBPPopUpFormSubmit',
                         'title' => 'Submit button text',
                         'fieldType' => 'text',
@@ -446,6 +463,7 @@ class PopUpController extends BaseController {
                         'title' => 'Pop up delay(seconds)',
                         'fieldType' => 'number',
                         'args' => [
+                            'label' => 'Pop up is loaded via AJAX, natural delay is about 4-5sec, so if you set delay to 5sec, whole delay will be 10sec'
                         ]
                     ],
                     [
@@ -463,7 +481,7 @@ class PopUpController extends BaseController {
                         'fieldType' => 'numbersSeparated',
                         'args' => [
                             'label' => 'If you want many times display pop up, for example second time after 2 minutes, third time after 5 minutes, write 2;5.' .
-                                ' If you want display only one time - write 525600(minutes in one year)). '
+                                ' If you want display only one time - write -1. '
                         ]
                     ]
                 ]

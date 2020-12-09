@@ -1,9 +1,9 @@
 <?php
 /**
- * @package popUpThat
+ * @package kBPlug
  */
 
-namespace Inc\Base;
+namespace kbPlug\Inc\Base;
 
 
 class Enqueue extends BaseController {
@@ -11,21 +11,6 @@ class Enqueue extends BaseController {
         add_action('admin_enqueue_scripts', array($this, 'enqueueAdmin'));
         if($this->isActivated('kBPPopUpEnable')) {
             add_action('wp_enqueue_scripts', array($this, 'enqueuePopUp'));
-            add_filter('script_loader_tag', array($this, 'addAsyncOrDefer'), 10, 2);
-        }
-    }
-
-    function addAsyncOrDefer($tag, $handle) {
-        if(!is_admin()) {
-            if (strpos($handle, 'async') !== false) {
-                return str_replace('<script ', '<script async ', $tag);
-            } else if (strpos($handle, 'defer') !== false) {
-                return str_replace('<script ', '<script defer ', $tag);
-            } else {
-                return $tag;
-            }
-        } else {
-            return $tag;
         }
     }
 
@@ -33,23 +18,25 @@ class Enqueue extends BaseController {
         if('toplevel_page_kBPlugin' == $hook || 'kbplugin_page_kBPluginPopUp' == $hook || 'kbplugin_page_kBPluginCustomCSS' == $hook) {
             wp_enqueue_media();
             wp_enqueue_style('kBPaStyle', $this->pluginUrl. 'assets/css/aStyle.css');
-            wp_enqueue_script('jqueryMin', 'https://code.jquery.com/jquery-3.5.0.min.js', NULL, NULL, false);
-            wp_enqueue_script('aScript', $this->pluginUrl . 'assets/aScript.js', array('jqueryMin'), null, true);
+            wp_enqueue_script('aScript', $this->pluginUrl . 'assets/aScript.js', array('jquery'), null, true);
         }
 
         if('kbplugin_page_kBPluginCustomCSS' == $hook) {
             wp_enqueue_script('ace', $this->pluginUrl . 'assets/js/ace/ace.js', array('jquery'), null, true);
-            wp_enqueue_script('customCSS', $this->pluginUrl . 'assets/js/admin/customCSS.js', array('jqueryMin'), null, true);
+            wp_enqueue_script('customCSS', $this->pluginUrl . 'assets/js/admin/customCSS.js', array('jquery'), null, true);
         }
     }
 
     function enqueuePopUp() {
-        if($this->isActivated('kBPCustomCSSEnable') && file_exists($this->pluginPath . 'assets/css/fcStyle.min.css')) {
-            wp_enqueue_style('kBPfStyle', $this->pluginUrl . 'assets/css/fcStyle.min.css');
-        } else {
-            wp_enqueue_style('kBPfStyle', $this->pluginUrl . 'assets/css/fStyle.min.css');
-        }
-
-        wp_enqueue_script('fScript-defer', $this->pluginUrl . 'assets/fScript.min.js', array('jquery'), "1.0", true);
+//        if($this->isActivated('kBPCustomCSSEnable') && file_exists($this->pluginPath . 'assets/css/fcStyle.min.css')) {
+//            wp_enqueue_style('kBPfStyle', $this->pluginUrl . 'assets/css/fcStyle.min.css', null, null,'all');
+//        } else {
+////            wp_enqueue_style('kBPfStyle', $this->pluginUrl . 'assets/css/fStyle.css', null, null,'all');
+//        }
+        wp_register_script('kBPlugJS', $this->pluginUrl . 'assets/fScript.min.js', ['jquery'], null, true);
+        wp_localize_script('kBPlugJS', 'kBPlug', [
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+        ]);
+        wp_enqueue_script('kBPlugJS');
     }
 }

@@ -4,6 +4,7 @@
   "description": "kBPlug plugin created by Kamil Brodziak",
   "main": "index.js",
   "dependencies": {
+    "google-closure-compiler": "^20200504.0.0",
     "csso": "^4.0.3"
   },
   "devDependencies": {},

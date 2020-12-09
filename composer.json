@@ -10,8 +10,11 @@
         }
     ],
     "minimum-stability": "dev",
-    "require": {},
+    "require": {
+        "timber/timber": "dev-master",
+      "ext-json": "*"
+    },
     "autoload": {
-        "psr-4": {"Inc\\":  "./inc"}
+        "psr-4": {"kbPlug\\Inc\\":  "./inc"}
     }
 }

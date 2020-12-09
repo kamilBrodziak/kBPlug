@@ -1,100 +1,188 @@
-$(function() {
-    let popUpDOM = $("#kBPPopUp");
-    let popUp = new PopUp(popUpDOM, parseInt(popUpDOM.data('delay'), 10), popUpDOM.data('repetition'),
-        $("#kBPPopUpCloseButton"), ['kBPPopUpForm', 'kBPPopUpFormMobile']);
-    popUp.launch();
+let $ = jQuery.noConflict();
+let popUp;
+$(() => {
+    popUp = new PopUp();
+    popUp.loadAjax();
+    // loadAjax();
 });
 
+// function loadAjax() {
+//     const storageController = new StorageController();
+//
+//     if(!storageController.isSubmitted()) {
+//         jQuery.ajax({
+//             url: kBPlug.ajaxUrl,
+//             type: 'POST',
+//             data: {
+//                 action: 'loadPopUpAjax',
+//                 mode: (window.innerWidth >= 996) ? 'desktop' : 'mobile'
+//             },
+//             beforeSend: () => {
+//             },
+//             error: (response) => {
+//                 console.log(response);
+//             },
+//             success: (response) => {
+//                 const args = JSON.parse(response);
+//                 $('body').append(args.js);
+//                 storageController.setCustomRepetition(args.repetition).loadRepetitionIntoLS();
+//                 const popUpController = new PopUpController(storageController, $(args.content), args.delay);
+//                 popUpController.launch();
+//
+//             }
+//         });
+//     }
+// }
+
+function onKBPPopUpSubmit(token) {
+    popUp.form.trigger('submit', [{hide: false}]);
+    popUp.hide();
+}
+
 class PopUp {
-    constructor(popUp, delay, repetition, closeButton, formIDs) {
-        this.popUp = popUp;
-        this.delay = delay;
-        this.repetition = repetition;
-        this.closeButton = closeButton;
-        this.formIDs = formIDs;
+    constructor() {
+        this.popUp = null;
+        this.delay = null;
+        this.repetition = null;
+        this.closeButton = null;
+        this.form = null;
         this.closeClicked = false;
         this.submitted = false;
         this.opened = false;
+        this.displayClass = "kBPPopUpDisplay";
+        this.body = $(document.body);
+        this.repetitionLS = 'kBPRepetition';
+        this.repetitionLSDateLaunch = 'kBPRepetitionDateLaunch';
+        this.repetitionLSOrder = 'kBPRepetitionOrder';
+        this.repetitionLSOneTime = 'kBPRepetitionOneTime';
     }
 
     launch() {
-
-        if(window.localStorage.getItem('isSubmitted') === null) {
-            if (this.repetition === "") {
-                // EVERY LAUNCH IF REPETITION NOT SET
-                this.showPopUpWithDelay(this.delay);
-            } else if (this.repetition !== window.localStorage.getItem('repetition')) {
+        if (this.repetition === "") {
+            // EVERY LAUNCH IF REPETITION NOT SET
+            this.show(this.delay);
+            this.resetRepetition();
+        } else {
+            if(this.repetition !== window.localStorage.getItem(this.repetitionLS)) {
                 // FIRST LAUNCH WHEN REPETITION SET OR DIFFERENT REPETITION SET AND USER FOR THE FIRST TIME ENTER DOMAIN
-                let repetitionOrder = 0;
-                let dateLaunch = 0;
-                window.localStorage.setItem('repetition', this.repetition);
-                this.showPopUpInterval(dateLaunch, repetitionOrder, this.delay);
-            } else if (this.repetition === window.localStorage.getItem('repetition')) {
+                window.localStorage.setItem(this.repetitionLS, this.repetition);
+                this.showInterval(0, 0, this.delay);
+            } else {
                 // NEXT LAUNCHES WHEN REPETITION SET AND WHEN USER AGAIN ENTER DOMAIN OR CHANGE PAGE
-                let repetitionOrder = (window.localStorage.getItem('repetitionOrder') !== null) ?
-                    parseInt(window.localStorage.getItem('repetitionOrder'), 10) : 0;
-                let dateLaunch = (window.localStorage.getItem('dateLaunch') !== null) ?
-                    parseInt(window.localStorage.getItem('dateLaunch'), 10) : 0;
-                let delay = (Date.now() > dateLaunch) ? this.delay : 0;
-                this.showPopUpInterval(dateLaunch, repetitionOrder, delay);
+                const orderLS = window.localStorage.getItem(this.repetitionLSOrder),
+                    dateLaunchLS = window.localStorage.getItem(this.repetitionLSDateLaunch);
+                const repetitionOrder = (orderLS !== null) ? parseInt(orderLS, 10) : 0;
+                const dateLaunch = (dateLaunchLS !== null) ? parseInt(dateLaunchLS, 10) : 0;
+                this.showInterval(dateLaunch, repetitionOrder, (Date.now() > dateLaunch) ? this.delay : 0);
             }
         }
     }
 
-    showPopUpInterval(dateLaunch, repetitionOrder, delay = 0) {
-        let repetitionArray = this.repetition.split(';');
-        let self = this;
-        let interval = setInterval(function () {
-            if(self.submitted) {
-                clearInterval(interval);
-            } else if(Date.now() > dateLaunch && !self.opened && !self.closeClicked) {
-                self.showPopUpWithDelay(delay);
-            } else if(Date.now() > dateLaunch && !self.opened && self.closeClicked) {
-                dateLaunch = Date.now() + (parseInt(repetitionArray[repetitionOrder], 10) * 60 * 1000);
-                repetitionOrder = (++repetitionOrder % repetitionArray.length);
-                window.localStorage.setItem('repetitionOrder', repetitionOrder.toString());
-                window.localStorage.setItem('dateLaunch', dateLaunch.toString());
-                self.closeClicked = false;
-            }
-        }, 100);
+    resetRepetition() {
+        window.localStorage.removeItem(this.repetitionLS);
+        window.localStorage.removeItem(this.repetitionLSOrder);
+        window.localStorage.removeItem(this.repetitionLSDateLaunch);
     }
 
-    showPopUpWithDelay(delay = this.delay) {
-        let self = this;
+    loadAjax() {
+        const _this = this;
+        if(window.localStorage.getItem('isSubmittedd') === null) {
+            jQuery.ajax({
+                url: kBPlug.ajaxUrl,
+                type: 'POST',
+                data: {
+                    action: 'loadPopUpAjax',
+                    mode: (window.innerWidth >= 996) ? 'desktop' : 'mobile'
+                },
+                beforeSend: () => {
+                },
+                error: (response) => {
+                    console.log(response);
+                },
+                success: (response) => {
+                    const args = JSON.parse(response);
+                    if(args.repetition === '-1') {
+                        if(window.localStorage.getItem(_this.repetitionLSOneTime) !== null) {
+                            return;
+                        }
+                        window.localStorage.setItem(_this.repetitionLSOneTime, 'true');
+                    } else {
+                        if(window.localStorage.getItem(_this.repetitionLSOneTime) !== null) {
+                            window.localStorage.removeItem(_this.repetitionLSOneTime);
+                        }
+                    }
+
+                    _this.popUp = $(args.content);
+                    _this.repetition = args.repetition;
+                    _this.delay = args.delay;
+                    _this.closeButton = _this.popUp.find('#kBPPopUpCloseButton');
+                    _this.form = _this.popUp.find('#kBPPopUpForm');
+                    _this.launch();
+                }
+            });
+        }
+    }
+
+    showInterval(dateLaunch, repetitionOrder, delay) {
+        const repetitionArray = this.repetition.split(';').map((el, i) => parseInt(el, 10)),
+            _this = this;
+        const interval = setInterval(function() {
+            if(_this.submitted) {
+                clearInterval(interval);
+            } else if(Date.now() > dateLaunch && !_this.opened) {
+                if(!_this.closeClicked) {
+                    _this.show(delay);
+                } else {
+                    dateLaunch = Date.now() + (repetitionArray[repetitionOrder] * 60000);
+                    repetitionOrder = (++repetitionOrder % repetitionArray.length);
+                    window.localStorage.setItem(_this.repetitionLSOrder, repetitionOrder.toString());
+                    window.localStorage.setItem(_this.repetitionLSDateLaunch, dateLaunch.toString());
+                    _this.closeClicked = false;
+                }
+            }
+        },1000);
+    }
+
+    show(delay) {
+        const _this = this;
+        this.body.addClass(_this.displayClass);
         this.opened = true;
-        setTimeout(function() {
-            self.showPopUp();
-            self.addCloseButton();
+        _this.addCloseEvent();
+        _this.addSubmitEvent();
+        setTimeout(() => {
+            _this.body.append(_this.popUp);
+            _this.body.addClass(_this.displayClass);
         }, delay * 1000);
     }
 
-    showPopUp() {
-        this.popUp.addClass('kBPPopUpShow');
-        $('body').addClass('kBPPopUpShow');
-    }
-
-    hidePopUp() {
-        this.popUp.removeClass('kBPPopUpShow');
-        $('body').removeClass('kBPPopUpShow');
-    }
-
-    addCloseButton() {
-        let self = this;
-        this.closeButton.on('click', function () {
-            self.hidePopUp();
-            self.closeClicked = true;
-            self.opened = false;
+    addCloseEvent() {
+        const _this = this;
+        this.closeButton.on('click', (e) => {
+            e.preventDefault();
+            _this.hide();
+            _this.closeClicked = true;
+            _this.opened = false;
         });
     }
 
-    hideForeverAfterSubmit() {
-        let self = this;
-        for(let formID in this.formIDs) {
-            $('#' + formID).on('submit', function () {
-                self.hidePopUp();
-                self.submitted = true;
+    addSubmitEvent() {
+        const _this = this;
+        this.form.on('submit', (e, json) => {
+            if(!grecaptcha.getResponse()) {
+                e.preventDefault();
+                grecaptcha.execute();
+            } else {
+                _this.submitted = true;
                 window.localStorage.setItem('isSubmitted', 'true');
-            });
-        }
+                if(json && json.hide) {
+                    _this.hide();
+                }
+            }
+        });
+    }
+
+    hide() {
+        this.popUp.remove();
+        this.body.removeClass(this.displayClass);
     }
 }

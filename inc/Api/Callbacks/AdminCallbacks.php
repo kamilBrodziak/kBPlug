@@ -1,12 +1,12 @@
 <?php
 /**
- * @package popUpThat
+ * @package kBPlug
  */
 
-namespace Inc\Api\Callbacks;
+namespace kbPlug\Inc\Api\Callbacks;
 
 
-use Inc\Base\BaseController;
+use kbPlug\Inc\Base\BaseController;
 
 class AdminCallbacks extends BaseController {
 	public function adminDashboard() {

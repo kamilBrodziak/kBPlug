@@ -1,0 +1,128 @@
+$colorDarkGray: #232323;
+$colorGray: #343434;
+$colorOrange: #ff780a;
+$colorBlue: #1b04ef;
+$colorLightGray: #3d3d3d;
+
+.kBPCloseButtonContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.kBPCloseButton {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: 0;
+    outline: 0;
+    
+    &:before, &:after {
+        position: absolute;
+        top: 40%;
+        left: 10%;
+        width: 80%;
+        height: 20%;
+        content: '';
+        background: linear-gradient(to bottom, #4b4b4b 50%, #2a2a2a 50%);
+        border-radius: 10px;
+    }
+    
+    &:before {
+        transform: rotateZ(-45deg);
+    }
+    
+    &:after {
+        transform: rotateZ(45deg);
+    }
+}
+
+.kBPPopUpDisplay {
+    overflow: hidden;
+    height: 100vh;
+    height: -webkit-fill-available;
+}
+
+.kBPFlexCentered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.kBPBlackLink {
+    color: black;
+    transition: all 0.1s ease;
+    text-decoration: none;
+    font-style: italic;
+    
+    &:hover, &:active {
+        color: #5a5a5a;
+    }
+}
+
+.kBPButtonBlackAnimated {
+    font-size: 2rem;
+    font-weight: bold;
+    height: 80px;
+    width: calc(100% - 20px);
+    margin: 10px;
+    background: white;
+    color: silver;
+    border: 8px groove $colorGray;
+    background: var(--gradientBlack);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    
+    &:disabled {
+        cursor: not-allowed;
+        color: #787878;
+    }
+    
+    &:active {
+        border: 4px groove $colorDarkGray;
+    }
+    
+    &:before, &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        border-radius: 10px 10px 50px 50px;
+        box-sizing: border-box;
+        transition: 0.3s all ease;
+    }
+    
+    &:not(:disabled):hover {
+        &:before, &:after {
+            opacity: 1;
+        }
+        &:before {
+            background: linear-gradient(rgb(27, 4, 239),rgb(27, 4, 239)) no-repeat center top / 100% 4px;
+            animation: 2s kBPSnake infinite;
+        }
+        
+        &:after {
+            background: linear-gradient(rgb(255,120,10),rgb(255,120,10)) no-repeat center bottom / 100% 4px;
+            animation: 2s kBPSnake infinite reverse linear;
+        }
+    }
+}
+
+@keyframes kBPSnake {
+    0% {
+        transform: translateX(-100%);
+    }
+    
+    100% {
+        transform: translateX(100%);
+    }
+}

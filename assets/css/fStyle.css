@@ -1,262 +1,305 @@
-/*
-===============================================================
-    POP UP CONTAINER
-===============================================================
-*/
 #kBPPopUp {
   position: fixed;
-  display: none;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  box-sizing: border-box;
-  padding: 5%;
   left: 0;
   top: 0;
+  width: 100vw;
+  height: 100vh;
+  height: -webkit-fill-available;
+  overflow: auto;
+  z-index: 999;
+  box-sizing: border-box;
+  text-align: center;
   font-size: 16px;
-  background: linear-gradient(35deg, rgba(253, 253, 253, 0.03) 0%, rgba(253, 253, 253, 0.03) 53%, rgba(109, 109, 109, 0.03) 53%, rgba(109, 109, 109, 0.03) 59%, rgba(228, 228, 228, 0.03) 59%, rgba(228, 228, 228, 0.03) 66%, rgba(42, 42, 42, 0.03) 66%, rgba(42, 42, 42, 0.03) 100%), linear-gradient(205deg, rgba(62, 62, 62, 0.03) 0%, rgba(62, 62, 62, 0.03) 31%, rgba(200, 200, 200, 0.03) 31%, rgba(200, 200, 200, 0.03) 41%, rgba(30, 30, 30, 0.03) 41%, rgba(30, 30, 30, 0.03) 47%, rgba(151, 151, 151, 0.03) 47%, rgba(151, 151, 151, 0.03) 60%, rgba(95, 95, 95, 0.03) 60%, rgba(95, 95, 95, 0.03) 100%), linear-gradient(30deg, rgba(7, 7, 7, 0.03) 0%, rgba(7, 7, 7, 0.03) 19%, rgba(63, 63, 63, 0.03) 19%, rgba(63, 63, 63, 0.03) 33%, rgba(175, 175, 175, 0.03) 33%, rgba(175, 175, 175, 0.03) 37%, rgba(244, 244, 244, 0.03) 37%, rgba(244, 244, 244, 0.03) 60%, rgba(177, 177, 177, 0.03) 60%, rgba(177, 177, 177, 0.03) 100%), linear-gradient(90deg, #d2d2d2, #e1e1e1);
-}
-#kBPPopUp * {
+  -webkit-overflow-scrolling: touch;
+  background: repeating-linear-gradient(45deg, rgba(55, 55, 55, 0.11) 0px, rgba(55, 55, 55, 0.11) 28px, rgba(91, 91, 91, 0.11) 28px, rgba(91, 91, 91, 0.11) 66px, rgba(123, 123, 123, 0.11) 66px, rgba(123, 123, 123, 0.11) 77px, rgba(133, 133, 133, 0.11) 77px, rgba(133, 133, 133, 0.11) 111px, rgba(161, 161, 161, 0.11) 111px, rgba(161, 161, 161, 0.11) 128px, rgba(15, 15, 15, 0.11) 128px, rgba(15, 15, 15, 0.11) 156px, rgba(176, 176, 176, 0.11) 156px, rgba(176, 176, 176, 0.11) 173px, rgba(61, 61, 61, 0.11) 173px, rgba(61, 61, 61, 0.11) 194px), white;
   color: #4b4b4b;
 }
 
-.kBPPopUpShow {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
-}
-
-#kBPPopUp.kBPPopUpShow {
+#kBPPopUpHeader {
   display: flex;
-  height: 100%;
-  overflow-y: auto;
+  justify-content: flex-end;
+  height: 56px;
 }
 
-@media only screen and (min-width: 992px) {
+@media all and (min-width: 992px) {
   #kBPPopUp {
-    flex-direction: row;
     font-size: 20px;
   }
 }
-/*
-===============================================================
-    POP UP SWITCHING MODE MOBILE-DESKTOP
-===============================================================
-*/
-@media only screen and (max-width: 991px) {
-  .kBPPopUpContentDesktop {
-    display: none !important;
-  }
-}
-@media only screen and (min-width: 992px) {
-  .kBPPopUpContentMobile {
-    display: none !important;
-  }
-}
-/*
-===============================================================
-    POP UP CONTENT CONTAINER
-===============================================================
-*/
-#kBPPopUpContent {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-  height: 100%;
-  padding: 36px 1% 0 1%;
-}
-
-@media only screen and (max-width: 991px) {
-  #kBPPopUpImgContainerMobile ~ #kBPPopUpContent {
-    height: 80%;
-    padding: 0 1% 0 1%;
-  }
-}
-@media only screen and (min-width: 992px) {
-  #kBPPopUpContent {
-    width: 60%;
-    height: 100%;
-    padding: 0 1% 0 1%;
-  }
-}
-/*
-===============================================================
-    POP UP IMAGE
-===============================================================
-*/
-@media only screen and (max-width: 992px) {
-  #kBPPopUpImgContainerMobile {
-    width: auto;
-    height: 20%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #kBPPopUpImgMobile {
-    width: auto;
-    height: 100%;
-  }
-}
-@media only screen and (min-width: 992px) {
-  #kBPPopUpImgContainer {
-    width: 40%;
-    height: 100%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #kBPPopUpImg {
-    width: 100%;
-    height: auto;
-    max-height: 100%;
-  }
-}
-#kBPPopUpDescription {
-  height: auto;
-}
-
-/*
-===============================================================
-    FORM
-===============================================================
-*/
-@media only screen and (max-width: 991px) {
-  #kBPPopUpFormMobile {
-    display: flex;
-  }
-}
-@media only screen and (min-width: 992px) {
-  #kBPPopUpForm {
-    display: flex;
-  }
-}
-#kBPPopUpForm, #kBPPopUpFormMobile {
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 70%;
-  width: 100%;
-}
-#kBPPopUpForm label, #kBPPopUpFormMobile label {
-  overflow: visible;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: auto;
-}
-#kBPPopUpForm label a, #kBPPopUpFormMobile label a {
-  color: black;
-  font-weight: bold;
-  width: auto;
-}
-#kBPPopUpForm label:not(.kBPCheckboxLabel), #kBPPopUpFormMobile label:not(.kBPCheckboxLabel) {
-  flex-direction: column;
-}
-#kBPPopUpForm label .kBPPopUpFormCheckboxInfo, #kBPPopUpFormMobile label .kBPPopUpFormCheckboxInfo {
-  width: 80%;
-  box-sizing: border-box;
-  padding-left: 5%;
-  text-align: left;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-}
-#kBPPopUpForm input, #kBPPopUpFormMobile input {
-  box-sizing: border-box;
-  padding: 15px 0 15px 0;
-  background: linear-gradient(to bottom, #c3c3c3, white, #c3c3c3);
-  box-shadow: 0 0 8px 0 gray;
-  border: 2px inset #f0f0f0;
-  font-weight: normal;
-  margin: 4px 0 4px 0;
-}
-#kBPPopUpForm input:not([type=checkbox]), #kBPPopUpFormMobile input:not([type=checkbox]) {
-  display: block;
-  width: 100%;
-  font-size: 15px;
-}
-#kBPPopUpForm input:not([type=checkbox]):focus, #kBPPopUpFormMobile input:not([type=checkbox]):focus {
-  box-shadow: 0 0 20px 0 gray;
-}
-#kBPPopUpForm input[type=checkbox], #kBPPopUpFormMobile input[type=checkbox] {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-#kBPPopUpForm input[type=submit], #kBPPopUpFormMobile input[type=submit] {
-  padding: 25px 0 25px 0;
-  font-size: 25px;
-  font-weight: bold;
-  border: 2px outset #f0f0f0;
-}
-#kBPPopUpForm input[type=submit]:active, #kBPPopUpFormMobile input[type=submit]:active {
-  border-style: inset;
-}
-
-@media only screen and (min-width: 992px) {
-  #kBPPopUpForm, #kBPPopUpFormMobile {
-    width: 80%;
-  }
-  #kBPPopUpForm input, #kBPPopUpFormMobile input {
-    transition: all 0.3s ease;
-  }
-  #kBPPopUpForm input:hover, #kBPPopUpFormMobile input:hover {
-    box-shadow: 0 0 20px 0 gray;
-  }
-  #kBPPopUpForm input[type=submit]:hover, #kBPPopUpFormMobile input[type=submit]:hover {
-    letter-spacing: 2px;
-  }
-  #kBPPopUpForm label a, #kBPPopUpFormMobile label a {
-    transition: all 0.3s ease;
-  }
-  #kBPPopUpForm label a:hover, #kBPPopUpFormMobile label a:hover {
-    color: #555555;
-  }
-}
-/*
-===============================================================
-    POP UP CLOSE BUTTON
-===============================================================
-*/
-#kBPPopUpCloseButtonContainer {
-  position: absolute;
-  right: 0;
+.kBPCloseButtonContainer {
+  position: fixed;
   top: 0;
-  width: 50px;
+  left: 0;
+  width: 100vw;
   height: 50px;
+  display: flex;
+  justify-content: flex-end;
 }
-#kBPPopUpCloseButtonContainer #kBPPopUpCloseButton {
-  width: 50px;
-  height: 50px;
-  display: block;
+
+.kBPCloseButton {
   position: relative;
-}
-#kBPPopUpCloseButtonContainer #kBPPopUpCloseButton .kBPPopUpCloseButtonPart {
-  height: 10px;
   width: 50px;
-  background: #4b4b4b;
-  box-sizing: border-box;
-  border: 4px groove #4b4b4b;
-  border-radius: 10px;
-  position: absolute;
-  top: 20px;
+  height: 50px;
+  background: none;
+  border: 0;
+  outline: 0;
 }
-#kBPPopUpCloseButtonContainer #kBPPopUpCloseButton .kBPPopUpCloseButtonPart:first-child {
+.kBPCloseButton:before, .kBPCloseButton:after {
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  width: 80%;
+  height: 20%;
+  content: "";
+  background: linear-gradient(to bottom, #4b4b4b 50%, #2a2a2a 50%);
+  border-radius: 10px;
+}
+.kBPCloseButton:before {
+  transform: rotateZ(-45deg);
+}
+.kBPCloseButton:after {
   transform: rotateZ(45deg);
 }
-#kBPPopUpCloseButtonContainer #kBPPopUpCloseButton .kBPPopUpCloseButtonPart:last-child {
-  transform: rotateZ(-45deg);
+
+.kBPPopUpDisplay {
+  overflow: hidden;
+  height: 100vh;
+  height: -webkit-fill-available;
+}
+
+.kBPFlexCentered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.kBPBlackLink {
+  color: black;
+  transition: all 0.1s ease;
+  text-decoration: none;
+  font-style: italic;
+}
+.kBPBlackLink:hover, .kBPBlackLink:active {
+  color: #5a5a5a;
+}
+
+.kBPButtonBlackAnimated {
+  font-size: 2rem;
+  font-weight: bold;
+  height: 80px;
+  width: calc(100% - 20px);
+  margin: 10px;
+  background: white;
+  color: silver;
+  border: 8px groove #343434;
+  background: var(--gradientBlack);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.kBPButtonBlackAnimated:disabled {
+  cursor: not-allowed;
+  color: #787878;
+}
+.kBPButtonBlackAnimated:active {
+  border: 4px groove #232323;
+}
+.kBPButtonBlackAnimated:before, .kBPButtonBlackAnimated:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  border-radius: 10px 10px 50px 50px;
+  box-sizing: border-box;
+  transition: 0.3s all ease;
+}
+.kBPButtonBlackAnimated:not(:disabled):hover:before, .kBPButtonBlackAnimated:not(:disabled):hover:after {
+  opacity: 1;
+}
+.kBPButtonBlackAnimated:not(:disabled):hover:before {
+  background: linear-gradient(#1b04ef, #1b04ef) no-repeat center top/100% 4px;
+  animation: 2s kBPSnake infinite;
+}
+.kBPButtonBlackAnimated:not(:disabled):hover:after {
+  background: linear-gradient(#ff780a, #ff780a) no-repeat center bottom/100% 4px;
+  animation: 2s kBPSnake infinite reverse linear;
+}
+
+@keyframes kBPSnake {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+#kBPPopUpContent {
+  width: 100%;
+  flex: 1;
+  flex-direction: column;
+  padding: 5%;
+}
+
+#kBPPopUpLeftContent {
+  width: 100%;
+}
+
+#kBPPopUpRightContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px 1%;
+  align-items: center;
+  text-align: center;
+}
+
+@media all and (min-width: 996px) {
+  #kBPPopUpContent {
+    flex-direction: row;
+  }
+
+  #kBPPopUpLeftContent {
+    width: 40%;
+  }
+
+  #kBPPopUpRightContent {
+    width: 60%;
+  }
+}
+#kBPPopUpTitle {
+  font-size: 3rem;
+}
+
+#kBPPopUpSubTitle {
+  font-size: 2.5rem;
+}
+
+.kBPBorderRadiusTen {
+  border-radius: 10px;
+}
+
+#kBPPopUpForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+#kBPPopUpForm label, #kBPPopUpForm button {
+  min-width: 200px;
+  max-width: 400px;
+  width: 100%;
+}
+#kBPPopUpForm input[type=checkbox] {
+  width: 30px;
+  height: 30px;
+  padding: 0;
+}
+#kBPPopUpForm button {
+  color: silver;
+}
+#kBPPopUpForm input:-webkit-autofill,
+#kBPPopUpForm input:-webkit-autofill:hover,
+#kBPPopUpForm input:-webkit-autofill:focus,
+#kBPPopUpForm input:-webkit-autofill:active {
+  -webkit-text-fill-color: silver;
+  -webkit-box-shadow: 0 0 0 1000px #131313 inset !important;
+}
+
+.kBPVerticalLabel {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 0 20px 0;
+}
+.kBPVerticalLabel * {
+  text-align: center;
+}
+.kBPVerticalLabel span {
+  display: block;
+  padding: 0 0 5px 0;
+  width: 100%;
+}
+.kBPVerticalLabel input {
+  display: block;
+  width: 100%;
+  height: 50px;
+}
+
+.kBPHorizontalLabel {
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  height: auto;
+  font-size: 2rem;
+  text-align: left;
+  margin: 0 auto 20px auto;
+}
+.kBPHorizontalLabel span {
+  display: block;
+  width: calc(100% - 50px);
+  padding: 10px 0 0 0;
+}
+
+.kBPCheckbox {
+  border-radius: 5px;
+}
+
+.kBPGradientInput {
+  background: var(--gradientBlack);
+  border: 2px solid silver;
+  border-radius: 5px;
+  color: silver;
+  text-align: center;
+}
+.kBPGradientInput:focus {
+  border: 4px solid #d35400;
+}
+.kBPGradientInput.wrongInput {
+  border: 4px solid red;
+}
+.kBPGradientInput.approvedInput {
+  border: 4px solid green;
+}
+
+.kBPGradientCheckbox {
+  background: var(--gradientBlack);
+  border: 2px solid silver;
+  border-radius: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+}
+.kBPGradientCheckbox:checked {
+  background: linear-gradient(60deg, transparent calc(50% - 4px), silver calc(50% - 2px), silver calc(50% + 2px), transparent calc(50% + 4px)) no-repeat 13% 82%/50% 40%, linear-gradient(-60deg, transparent calc(50% - 4px), silver calc(50% - 2px), silver calc(50% + 2px), transparent calc(50% + 4px)) no-repeat 78% 50%/50% 70%, var(--gradientBlack);
+}
+
+#kBPPopUpImgContainer {
+  width: 100%;
+  height: 300px;
+}
+
+#kBPPopUpImgMobile {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+@media all and (min-width: 992px) {
+  #kBPPopUpImgContainer {
+    height: 100%;
+  }
 }
 
 /*# sourceMappingURL=fStyle.css.map */

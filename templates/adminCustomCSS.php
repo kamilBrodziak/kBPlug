@@ -80,11 +80,11 @@ function minify_css( $string = '' ) {
                 ?>
             </textarea>
         </label>
-        <div id="kBPCustomCSSEditor"><?php
+        <div id="kBPCustomCSSEditor" style="max-width: 1000px; min-width: 300px; width: 100%; height: 70vh"><?php
             if(file_exists(plugin_dir_path(dirname(__FILE__, 1)) . 'assets/css/fcStyle.css')) {
                 echo file_get_contents(plugin_dir_url(dirname(__FILE__, 1)) . 'assets/css/fcStyle.css');
             } else {
-                echo file_get_contents(plugin_dir_url(dirname(__FILE__, 1)) . 'assets/css/fStyle.css');
+                echo file_get_contents(plugin_dir_url(dirname(__FILE__, 1)) . 'assets/css/fcStyleDefault.css');
             }
             ?>
         </div>

@@ -1,16 +1,16 @@
 <?php
 /**
- * @package popUpThat
+ * @package kBPlug
  */
 /*
-Plugin Name: Pop Up That
+Plugin Name: kBPlug
 Plugin URI:
-Description: Pop up plugin from Kamil Brodziak
+Description: Plugin made by Kamil Brodziak
 Version: 1.0
 Author: Kamil Brodziak
 Author URI:
-License: MIT
-Text Domain: popUpThat
+License: GNU
+Text Domain: kBPlug
 */
 
 defined('ABSPATH') or die( 'Hey, you can\t access this file!' );
@@ -20,17 +20,17 @@ if(file_exists(dirname(__FILE__) . '/vendor/autoload.php')) {
 }
 
 function activatePlugin() {
-    Inc\Base\Activate::activate();
+    kbPlug\Inc\Base\Activate::activate();
 }
 register_activation_hook( __FILE__, 'activatePlugin');
 
 function deactivatePlugin() {
-    Inc\Base\Deactivate::deactivate();
+    kbPlug\Inc\Base\Deactivate::deactivate();
 }
 register_deactivation_hook( __FILE__, 'deactivatePlugin');
 
-if(class_exists('Inc\\Init')) {
-    Inc\Init::registerServices();
+if(class_exists('kbPlug\\Inc\\Init')) {
+    kbPlug\Inc\Init::registerServices();
 }
 
 

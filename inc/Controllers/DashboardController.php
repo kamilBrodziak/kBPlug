@@ -1,14 +1,14 @@
 <?php
 /**
- * @package popUpThat
+ * @package kBPlug
  */
 
-namespace Inc\Controllers;
+namespace kbPlug\Inc\Controllers;
 
 
-use Inc\Base\BaseController;
-use Inc\Api\SettingsApi;
-use Inc\Api\Callbacks\AdminCallbacks;
+use kbPlug\Inc\Base\BaseController;
+use kbPlug\Inc\Api\SettingsApi;
+use kbPlug\Inc\Api\Callbacks\AdminCallbacks;
 
 class DashboardController extends BaseController {
 	public $settings;

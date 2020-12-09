@@ -1,0 +1,49 @@
+#kBPPopUpContent {
+    width: 100%;
+    flex: 1;
+    flex-direction: column;
+
+    padding: 5%;
+}
+
+#kBPPopUpLeftContent {
+    width: 100%;
+}
+
+#kBPPopUpRightContent {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 1%;
+    align-items: center;
+    text-align: center;
+    
+}
+
+@media all and (min-width: 996px) {
+    #kBPPopUpContent {
+        flex-direction: row;
+    }
+
+    #kBPPopUpLeftContent {
+        width: 40%;
+    }
+    #kBPPopUpRightContent {
+        width: 60%;
+    }
+}
+
+#kBPPopUpTitle {
+    font-size: 3rem;
+}
+
+#kBPPopUpSubTitle {
+    font-size: 2.5rem;
+}
+
+.kBPBorderRadiusTen {
+    border-radius: 10px;
+}
+

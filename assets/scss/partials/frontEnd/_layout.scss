@@ -1,0 +1,43 @@
+$closeButtonWidth: 50px;
+#kBPPopUp {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    height: -webkit-fill-available;
+    overflow: auto;
+    z-index: 999;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 16px;
+    -webkit-overflow-scrolling: touch;
+    background: repeating-linear-gradient(45deg, rgba(55, 55, 55, 0.11) 0px, rgba(55, 55, 55, 0.11) 28px,
+            rgba(91, 91, 91, 0.11) 28px, rgba(91, 91, 91, 0.11) 66px,
+            rgba(123, 123, 123, 0.11) 66px, rgba(123, 123, 123, 0.11) 77px,
+            rgba(133, 133, 133, 0.11) 77px, rgba(133, 133, 133, 0.11) 111px,
+            rgba(161, 161, 161, 0.11) 111px, rgba(161, 161, 161, 0.11) 128px,
+            rgba(15, 15, 15, 0.11) 128px, rgba(15, 15, 15, 0.11) 156px,
+            rgba(176, 176, 176, 0.11) 156px, rgba(176, 176, 176, 0.11) 173px,
+            rgba(61, 61, 61, 0.11) 173px, rgba(61, 61, 61, 0.11) 194px), white;
+    color: #4b4b4b;
+}
+
+#kBPPopUpHeader {
+    display: flex;
+    justify-content: flex-end;
+    height: 56px;
+}
+
+#kBPPopUpFooter {
+    //min-height: 50px;
+}
+
+
+@media all and (min-width: 992px) {
+    #kBPPopUp {
+        font-size: 20px;
+    }
+}

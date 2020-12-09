@@ -1,0 +1,121 @@
+#kBPPopUpForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    label, button {
+        min-width: 200px;
+        max-width: 400px;
+        width: 100%;
+    }
+    
+    input[type=checkbox] {
+        width: 30px;
+        height: 30px;
+        padding: 0;
+    }
+    
+    button {
+        color: silver;
+        
+    }
+    
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-text-fill-color: silver;
+        -webkit-box-shadow: 0 0 0 1000px #131313 inset !important;
+    }
+}
+
+@media all and (min-width: 996px) {
+    #kBPPopUpForm {
+    
+    }
+}
+
+.kBPVerticalLabel {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-size: 2rem;
+    text-align: center;
+    margin: 0 0 20px 0;
+    
+    * {
+        text-align: center;
+    }
+    
+    span {
+        display: block;
+        padding: 0 0 5px 0;
+        width: 100%;
+    }
+    
+    input {
+        display: block;
+        width: 100%;
+        height: 50px;
+    }
+}
+
+.kBPHorizontalLabel {
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: auto;
+    font-size: 2rem;
+    text-align: left;
+    margin: 0 auto 20px auto;
+    span {
+        display: block;
+        width: calc(100% - 50px);
+        padding: 10px 0 0 0;
+    }
+}
+
+.kBPCheckbox {
+    border-radius: 5px;
+}
+
+.kBPGradientInput {
+    background: var(--gradientBlack);
+    border: 2px solid silver;
+    border-radius: 5px;
+    color: silver;
+    text-align: center;
+    
+    &:focus {
+        border: 4px solid #d35400;
+    }
+    
+    &.wrongInput {
+        border: 4px solid red;
+    }
+    
+    &.approvedInput {
+        border: 4px solid green;
+    }
+}
+
+.kBPGradientCheckbox {
+    background: var(--gradientBlack);
+    border: 2px solid silver;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    
+    &:checked {
+        background: linear-gradient(60deg, transparent calc(50% - 4px), silver calc(50% - 2px),
+                silver calc(50% + 2px), transparent calc(50% + 4px)) no-repeat 13% 82% / 50% 40%,
+        linear-gradient(-60deg, transparent calc(50% - 4px), silver calc(50% - 2px),
+                        silver calc(50% + 2px), transparent calc(50% + 4px)) no-repeat 78% 50% / 50% 70%,
+        var(--gradientBlack);
+    }
+}

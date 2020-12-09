@@ -1,5 +1,5 @@
 <?php
-namespace Inc\Api\Callbacks;
+namespace kbPlug\Inc\Api\Callbacks;
 
 class SettingsCallbacks {
 	public $settingsSections;
@@ -51,8 +51,10 @@ class SettingsCallbacks {
         //		$classes = $args['class'];
         $optionName = $args['optionName'];
         $text = get_option($optionName);
+        $label = $args['label'];
         $value = (isset($text[$name])) ? ($text[$name] ? $text[$name] : 0) : 0;
-        echo '<input type="number" name="' . $optionName . '[' . $name . ']' . '" value="' . $value . '" min=0 >';
+        echo '<input type="number" name="' . $optionName . '[' . $name . ']' . '" value="' . $value . '" min=0 >' .
+            "<p>${label}</p>";
     }
 
     public function numbersSeparatedField($args) {

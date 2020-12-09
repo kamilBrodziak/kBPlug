@@ -1,263 +1,217 @@
 /*
-===============================================================
-    POP UP CONTAINER
-===============================================================
+        By zmienić tło:
+        background: value;
+        Zamiast value może być:
+            a) kolor - np. red, blue, white lub #232323, #ffffff, lub rgb(0,0,0), rgb(22,13,255) lub rgba(0,0,0,0.1)
+                - red, blue, white itd.
+                - w postaci hex czyli # i 6 cyfr/liter (w systemie szesnastkowym) np. #008000 - zielony, #0000FF - niebieski
+                - w postaci rgb np. rgb(0, 0, 255) - niebieski, rgb(255,255,255) - biały
+                - w postaci rgba np. rgba(0, 0, 255, 0.2) - podobnie jak rgb, tylko ostatnia wartość to poziom przezroczystości
+            b) gradient:
+                - linearny - linear-gradient(to side, color stop1, color stop2...), gdzie side to w którą stronę np.
+                                left, right, top, bottom, color to kolor, stop1, stop2 itd to wartość pixelowa lub procentowa
+                                gdzie kolor ma wystąpić, np linear-gradient(to right, white 25%, red 50%, white 75%) spowoduje
+                                że od 0% do 25% będzie biały, następnie biały od 25% będzie przechodził powoli w czerwony aż do 50%,
+                                następnie od 50% czerwony będzie przechodzić w biały do 75%, następnie do końca będzie już biały
+                - radialny - kółeczko, zbyt dużo by opisywać
+                - polecam stronę https://www.gradientmagic.com/, wystarczy wybrać gradient, ewentualnie lekko go
+                    edytować i skopiować css i wkleić tam, gdzie ten gradient chcesz
+
+        By zmienić wielkość czcionki:
+            font-size: ..px;
+            Zamiast .. wpisujesz liczbę
+
+        By zmienić obramowanie
+            border: ..px type color;
+            Zamiast .. liczba, zamiast type typ, np. solid (zwykła prosta ramka, groove - dwukolorowa, dotted - kropkowana)
+                color to wybrany kolor
+
+        By zmienić kolor czcionki:
+            color: value;
+            Zamiast value kolor
+
+        By zmienić grubość tekstu:
+            font-weight: value;
+            Zamiast value to normal - normalny, bold - pogrubiony, bolder - jeszcze bardziej pogrubiony.
+
+        By zmienić wysokość elementu:
+            height: ..px;
+            Zamiast .. liczba.
+
+        By zmienić szerokość elementu:
+            width: ..px;
+            Zamiast .. liczba.
+
+        By dać odstęp na zewnątrz elementu:
+            margin: ..px; - odstęp po lewej, prawej, na górze i dole;
+            margin: ..px ..px ..px ..px; - odstęp po kolei: góra, prawo, dół, lewo
+            margin: ..px ..px; - odstęp po kolei: góra dół, lewo prawo
+            Zamiast .. liczba.
+
+        By dać odstęp wewnątrz elementu:
+            padding: ..px; - odstęp po lewej, prawej, na górze i dole;
+            padding: ..px ..px ..px ..px; - odstęp po kolei: góra, prawo, dół, lewo
+            padding: ..px ..px; - odstęp po kolei: góra dół, lewo prawo
+            Zamiast .. liczba.
+
+
+        Jeśli zmiana czegoś nie działa, spróbuj dodać !important, np:
+            background: white !important;
+*/
+
+
+
+/*
+
+    Ustawienia dla komputerów i telefonów (dla samych komputerów na samym dole poniżej @media)
+
+*/
+
+
+/*
+    Główny kontener popupa, tutaj można zmienić tło całego popupa czy ustawić domyślne parametry dla innych rzeczy
 */
 #kBPPopUp {
-  position: fixed;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  box-sizing: border-box;
-  padding: 5%;
-  left: 0;
-  top: 0;
-  font-size: 16px;
-  background: linear-gradient(35deg, rgba(253, 253, 253, 0.03) 0%, rgba(253, 253, 253, 0.03) 53%, rgba(109, 109, 109, 0.03) 53%, rgba(109, 109, 109, 0.03) 59%, rgba(228, 228, 228, 0.03) 59%, rgba(228, 228, 228, 0.03) 66%, rgba(42, 42, 42, 0.03) 66%, rgba(42, 42, 42, 0.03) 100%), linear-gradient(205deg, rgba(62, 62, 62, 0.03) 0%, rgba(62, 62, 62, 0.03) 31%, rgba(200, 200, 200, 0.03) 31%, rgba(200, 200, 200, 0.03) 41%, rgba(30, 30, 30, 0.03) 41%, rgba(30, 30, 30, 0.03) 47%, rgba(151, 151, 151, 0.03) 47%, rgba(151, 151, 151, 0.03) 60%, rgba(95, 95, 95, 0.03) 60%, rgba(95, 95, 95, 0.03) 100%), linear-gradient(30deg, rgba(7, 7, 7, 0.03) 0%, rgba(7, 7, 7, 0.03) 19%, rgba(63, 63, 63, 0.03) 19%, rgba(63, 63, 63, 0.03) 33%, rgba(175, 175, 175, 0.03) 33%, rgba(175, 175, 175, 0.03) 37%, rgba(244, 244, 244, 0.03) 37%, rgba(244, 244, 244, 0.03) 60%, rgba(177, 177, 177, 0.03) 60%, rgba(177, 177, 177, 0.03) 100%), linear-gradient(90deg, #d2d2d2, #e1e1e1);
-}
-#kBPPopUp * {
-  color: #4b4b4b;
+
 }
 
-.kBPPopUpShow {
-  width: 100%;
-  height: 100%;
-  overflow-y: hidden;
-}
-
-#kBPPopUp.kBPPopUpShow {
-  display: flex;
-  height: 100%;
-  overflow-y: auto;
-}
-
-@media only screen and (min-width: 992px) {
-  #kBPPopUp {
-    flex-direction: row;
-    font-size: 20px;
-  }
-}
 /*
-===============================================================
-    POP UP SWITCHING MODE MOBILE-DESKTOP
-===============================================================
-*/
-@media only screen and (max-width: 991px) {
-  .kBPPopUpContentDesktop {
-    display: none !important;
-  }
+
+    Linki
+
+ */
+.kBPBlackLink {
+
 }
-@media only screen and (min-width: 992px) {
-  .kBPPopUpContentMobile {
-    display: none !important;
-  }
-}
+
 /*
-===============================================================
-    POP UP CONTENT CONTAINER
-===============================================================
+    Przycisk do zamykania popupa
 */
-#kBPPopUpContent {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  box-sizing: border-box;
-  height: 100%;
-  padding: 36px 1% 0 1%;
+#kBPPopUpCloseButton {
+
 }
 
-@media only screen and (max-width: 991px) {
-  #kBPPopUpImgContainerMobile ~ #kBPPopUpContent {
-    height: 80%;
-    padding: 0 1% 0 1%;
-  }
-}
-@media only screen and (min-width: 992px) {
-  #kBPPopUpContent {
-    width: 60%;
-    height: 100%;
-    padding: 0 1% 0 1%;
-  }
-}
 /*
-===============================================================
-    POP UP IMAGE
-===============================================================
+    Kontener zdjęcia
+ */
+#kBPPopUpImgContainer {
+
+}
+
+/*
+    Zdjęcie
+ */
+#kBPPopUpImg {
+
+}
+
+/*
+    Tytuł
+ */
+#kBPPopUpTitle {
+
+}
+
+/*
+    Subtytuł
+ */
+#kBPPopUpSubTitle {
+
+}
+
+
+/*
+    Opis
 */
-@media only screen and (max-width: 992px) {
-  #kBPPopUpImgContainerMobile {
-    width: auto;
-    height: 20%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #kBPPopUpImgMobile {
-    width: auto;
-    height: 100%;
-  }
-}
-@media only screen and (min-width: 992px) {
-  #kBPPopUpImgContainer {
-    width: 40%;
-    height: 100%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  #kBPPopUpImg {
-    width: 100%;
-    height: auto;
-    max-height: 100%;
-  }
-}
 #kBPPopUpDescription {
-  height: auto;
+
 }
 
 /*
-===============================================================
-    FORM
-===============================================================
-*/
-@media only screen and (max-width: 991px) {
-  #kBPPopUpFormMobile {
-    display: flex;
-  }
-}
-@media only screen and (min-width: 992px) {
-  #kBPPopUpForm {
-    display: flex;
-  }
-}
-#kBPPopUpForm, #kBPPopUpFormMobile {
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 70%;
-  width: 100%;
-}
-#kBPPopUpForm label, #kBPPopUpFormMobile label {
-  overflow: visible;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: auto;
-}
-#kBPPopUpForm label a, #kBPPopUpFormMobile label a {
-  color: black;
-  font-weight: bold;
-  width: auto;
-}
-#kBPPopUpForm label:not(.kBPCheckboxLabel), #kBPPopUpFormMobile label:not(.kBPCheckboxLabel) {
-  flex-direction: column;
-}
-#kBPPopUpForm label .kBPPopUpFormCheckboxInfo, #kBPPopUpFormMobile label .kBPPopUpFormCheckboxInfo {
-  width: 80%;
-  box-sizing: border-box;
-  padding-left: 5%;
-  text-align: left;
-  font-size: 12px;
-  display: flex;
-  align-items: center;
-}
-#kBPPopUpForm input, #kBPPopUpFormMobile input {
-  box-sizing: border-box;
-  padding: 15px 0 15px 0;
-  background: linear-gradient(to bottom, #c3c3c3, white, #c3c3c3);
-  box-shadow: 0 0 8px 0 gray;
-  border: 2px inset #f0f0f0;
-  font-weight: normal;
-  margin: 4px 0 4px 0;
-}
-#kBPPopUpForm input:not([type=checkbox]), #kBPPopUpFormMobile input:not([type=checkbox]) {
-  display: block;
-  width: 100%;
-  font-size: 15px;
-}
-#kBPPopUpForm input:not([type=checkbox]):focus, #kBPPopUpFormMobile input:not([type=checkbox]):focus {
-  box-shadow: 0 0 20px 0 gray;
-}
-#kBPPopUpForm input[type=checkbox], #kBPPopUpFormMobile input[type=checkbox] {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-#kBPPopUpForm input[type=submit], #kBPPopUpFormMobile input[type=submit] {
-  padding: 25px 0 25px 0;
-  font-size: 25px;
-  font-weight: bold;
-  border: 2px outset #f0f0f0;
-}
-#kBPPopUpForm input[type=submit]:active, #kBPPopUpFormMobile input[type=submit]:active {
-  border-style: inset;
+    Formularz
+ */
+#kBPPopUpForm {
+
 }
 
-@media only screen and (min-width: 992px) {
-  #kBPPopUpForm, #kBPPopUpFormMobile {
-    width: 80%;
-  }
-  #kBPPopUpForm input, #kBPPopUpFormMobile input {
-    transition: all 0.3s ease;
-  }
-  #kBPPopUpForm input:hover, #kBPPopUpFormMobile input:hover {
-    box-shadow: 0 0 20px 0 gray;
-  }
-  #kBPPopUpForm input[type=submit]:hover, #kBPPopUpFormMobile input[type=submit]:hover {
-    letter-spacing: 2px;
-  }
-  #kBPPopUpForm label a, #kBPPopUpFormMobile label a {
-    transition: all 0.3s ease;
-  }
-  #kBPPopUpForm label a:hover, #kBPPopUpFormMobile label a:hover {
-    color: #555555;
-  }
-}
 /*
-===============================================================
-    POP UP CLOSE BUTTON
-===============================================================
-*/
-#kBPPopUpCloseButtonContainer {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 50px;
-  height: 50px;
-}
-#kBPPopUpCloseButtonContainer #kBPPopUpCloseButton {
-  width: 50px;
-  height: 50px;
-  display: block;
-  position: relative;
-}
-#kBPPopUpCloseButtonContainer #kBPPopUpCloseButton .kBPPopUpCloseButtonPart {
-  height: 10px;
-  width: 50px;
-  background: #4b4b4b;
-  box-sizing: border-box;
-  border: 4px groove #4b4b4b;
-  border-radius: 10px;
-  position: absolute;
-  top: 20px;
-}
-#kBPPopUpCloseButtonContainer #kBPPopUpCloseButton .kBPPopUpCloseButtonPart:first-child {
-  transform: rotateZ(45deg);
-}
-#kBPPopUpCloseButtonContainer #kBPPopUpCloseButton .kBPPopUpCloseButtonPart:last-child {
-  transform: rotateZ(-45deg);
+    Input imienia
+ */
+#kBPopUpFormName {
+
 }
 
-/*# sourceMappingURL=fStyle.css.map */
-                
+/*
+    Opis inputa imienia
+*/
+#kBPPopUpFormNameLabelText {
+
+}
+
+/*
+    Input emaila
+ */
+#kBPopUpFormEmail {
+
+}
+
+/*
+    Opis inputa emaila
+*/
+#kBPPopUpFormEmailLabelText {
+
+}
+
+/*
+    Checkbox polityki prywatności
+ */
+#kBPPopUpFormPrivacy {
+
+}
+
+/*
+    Opis checkboxa polityki prywatności
+*/
+#kBPPopUpFormPrivacyLabelText {
+
+}
+
+/*
+    Checkbox marketingu
+ */
+#kBPPopUpFormMarketing {
+
+}
+
+/*
+    Opis checkboxa marketingu
+*/
+#kBPPopUpFormNameMarketingText {
+
+}
+
+/*
+    Przycisk do wysłania formularza
+ */
+#kBPPopUpFormSubmit {
+
+}
+
+/*
+
+    Ustawienia tylko i wyłącznie dla komputerów
+    Tutaj możesz skopiować wybrany tag np.
+    #kBPPopUpTitle {
+
+    }
+    i dać w środku inne rzeczy, np. background: red; dla komputerów.
+
+*/
+@media all and (min-width: 992px) {
+
+}
+
+
+
+
+        

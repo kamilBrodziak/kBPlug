@@ -6,5 +6,11 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Inc\\' => array($baseDir . '/inc'),
+    'kbPlug\\Inc\\' => array($baseDir . '/inc'),
+    'Twig\\CacheExtension\\' => array($vendorDir . '/twig/cache-extension/lib'),
+    'Twig\\' => array($vendorDir . '/twig/twig/src'),
+    'Timber\\' => array($vendorDir . '/timber/timber/lib'),
+    'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
+    'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
+    'Composer\\Installers\\' => array($vendorDir . '/composer/installers/src/Composer/Installers'),
 );

@@ -1,9 +1,9 @@
 <?php
 /**
- * @package popUpThat
+ * @package kBPlug
  */
 
-namespace Inc\Base;
+namespace kbPlug\Inc\Base;
 
 
 class SettingLinks extends BaseController {
@@ -12,7 +12,7 @@ class SettingLinks extends BaseController {
     }
 
     function settingsPluginsLink($links) {
-        $settingsLink = '<a href="admin.php?page=kamilBrodziakPlugin">Settings</a>';
+        $settingsLink = '<a href="admin.php?page=kBPlugin">Settings</a>';
         array_push($links, $settingsLink);
         return $links;
     }

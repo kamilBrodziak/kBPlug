@@ -1,12 +1,12 @@
 <?php
 
 
-namespace Inc\Controllers;
+namespace kbPlug\Inc\Controllers;
 
 
-use Inc\Api\Callbacks\AdminCallbacks;
-use Inc\Api\SettingsApi;
-use Inc\Base\BaseController;
+use kbPlug\Inc\Api\Callbacks\AdminCallbacks;
+use kbPlug\Inc\Api\SettingsApi;
+use kbPlug\Inc\Base\BaseController;
 
 class CustomCSSController extends BaseController {
     public $subPages;

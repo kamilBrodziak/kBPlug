@@ -1,11 +1,11 @@
 <?php
 /**
- * @package popUpThat
+ * @package kBPlug
  */
 
-namespace Inc\Api;
+namespace kbPlug\Inc\Api;
 
-use Inc\Api\Callbacks\SettingsCallbacks;
+use kbPlug\Inc\Api\Callbacks\SettingsCallbacks;
 
 class SettingsApi {
 	public $adminPages = [];

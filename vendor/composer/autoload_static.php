@@ -6,18 +6,83 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit96d6f1b5fc18246a4072af1d5b073264
 {
+    public static $files = array (
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
-        'I' => 
+        'k' => 
         array (
-            'Inc\\' => 4,
+            'kbPlug\\Inc\\' => 11,
+        ),
+        'T' => 
+        array (
+            'Twig\\CacheExtension\\' => 20,
+            'Twig\\' => 5,
+            'Timber\\' => 7,
+        ),
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Mbstring\\' => 26,
+            'Symfony\\Polyfill\\Ctype\\' => 23,
+        ),
+        'C' => 
+        array (
+            'Composer\\Installers\\' => 20,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'Inc\\' => 
+        'kbPlug\\Inc\\' => 
         array (
             0 => __DIR__ . '/../..' . '/inc',
         ),
+        'Twig\\CacheExtension\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/cache-extension/lib',
+        ),
+        'Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/twig/src',
+        ),
+        'Timber\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/timber/timber/lib',
+        ),
+        'Symfony\\Polyfill\\Mbstring\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
+        ),
+        'Symfony\\Polyfill\\Ctype\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Composer\\Installers\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/composer/installers/src/Composer/Installers',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'T' => 
+        array (
+            'Twig_' => 
+            array (
+                0 => __DIR__ . '/..' . '/twig/twig/lib',
+            ),
+        ),
+        'R' => 
+        array (
+            'Routes' => 
+            array (
+                0 => __DIR__ . '/..' . '/upstatement/routes',
+            ),
+        ),
+    );
+
+    public static $classMap = array (
+        'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
@@ -25,6 +90,8 @@ class ComposerStaticInit96d6f1b5fc18246a4072af1d5b073264
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit96d6f1b5fc18246a4072af1d5b073264::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit96d6f1b5fc18246a4072af1d5b073264::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit96d6f1b5fc18246a4072af1d5b073264::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit96d6f1b5fc18246a4072af1d5b073264::$classMap;
 
         }, null, ClassLoader::class);
     }
